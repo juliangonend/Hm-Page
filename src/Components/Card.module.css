@@ -1,0 +1,82 @@
+.cardContainer{
+    margin:5vh ;
+    display: flex;
+    flex-direction: row;
+    gap: 2%;
+    align-items: center;
+    width: 35vw;
+    justify-content: start;
+    gap: 5%;
+    height: 35vh;
+    border-radius: 3%;
+    border: 2px solid lightblue;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.cardContainer:hover{
+  transform: scale(1.05);
+}
+
+.cardImg{
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+}
+.cardImg img{
+  height: 100%;
+}
+.cardText{
+  width: 40%;
+}
+.cardText h2{
+  font-size: 20px;
+  font-weight: bold;
+}
+.cardText p{
+  font-size: 15px;
+}
+.cardTextBack{
+  color:aliceblue;
+  width: 80%;
+  text-align: center;
+}
+.rotateEffect {
+  animation: rotate 0.3s ease-in-out;
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+@media only screen and  (max-width: 600px) {
+  
+  .cardContainer{
+    margin-right: 0;
+    margin-left: 0;
+    flex-direction: row;
+    gap: 2%;
+    align-items: center;
+    width: 90vw;
+    justify-content: start;
+    gap: 5%;
+    height: 40vh;
+    border-radius: 3%;
+    border: 2px solid lightblue;
+    overflow: hidden;
+  }
+  .cardImg{
+    width: 70%;
+    height: 100%;
+    overflow: hidden;
+}
+.cardText{
+  width: 20%;
+}
+}
