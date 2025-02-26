@@ -2,7 +2,7 @@ import {  Card } from 'react-bootstrap'
 import styles from './Training.module.css'
 export const Training = () => {
   return (
-    <div className='d-flex flex-column w-100 align-items-center my-5 gap-3 '>
+    <div className='d-flex flex-column w-100 align-items-center my-5 gap-3 ' id='ourServices'>
         <h2>Nuestros Entrenamientos</h2>
         <div className='d-flex gap-4 flex-wrap align-items-center justify-content-center'>
             <div>

@@ -1,0 +1,6 @@
+.teamImg{
+ transition: transform 0.8s ease;   
+}
+.teamImg:hover{
+    transform: scale(1.08);
+}

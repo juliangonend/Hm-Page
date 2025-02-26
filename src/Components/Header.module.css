@@ -4,13 +4,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
  }
  
  .carruselImage {
     width: 100%;
     height: 92vh; /* Asegúrate de que el contenedor tenga una altura fija */
     overflow: hidden;
- }
+}
  
  .carruselImage img {
     width: 100%;
@@ -19,3 +20,14 @@
     object-position: top;
  }
  
+ @media only screen and  (max-width: 600px){
+   .carrusel {
+      height: 60vh;
+      margin-bottom: 3%;
+      overflow: hidden;
+   }
+   .carruselImage {
+      width: 130%;
+      overflow: hidden;
+   }
+ }

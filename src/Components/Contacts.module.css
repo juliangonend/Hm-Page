@@ -1,0 +1,12 @@
+.contacts{
+    font-size: 16px;
+    
+}
+.contactsTitle{
+    font-size: 20px;
+    font-weight: 500;
+}
+.contactsContainer{
+    border-top: 3px solid lightblue;
+    border-bottom: 3px solid lightblue;
+}

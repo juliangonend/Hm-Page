@@ -8,8 +8,8 @@
     justify-content: start;
     gap: 5%;
     height: 35vh;
-    border-radius: 3%;
-    border: 2px solid lightblue;
+    border-radius: 10px;
+    border: 2px solid rgb(5, 5, 73);
     overflow: hidden;
     transition: transform 0.3s ease;
 }
@@ -41,17 +41,7 @@
   width: 80%;
   text-align: center;
 }
-.rotateEffect {
-  animation: rotate 0.3s ease-in-out;
-}
-@keyframes rotate {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
+
 
 
 
@@ -80,3 +70,4 @@
   width: 20%;
 }
 }
+
