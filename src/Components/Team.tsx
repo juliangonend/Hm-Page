@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { Col, Container, Row } from 'react-bootstrap'
 import styles from './Team.module.css'
 export const Team = () => {

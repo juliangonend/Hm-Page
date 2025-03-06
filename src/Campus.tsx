@@ -1,6 +1,4 @@
-import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
-import styles from "./Campus.module.css"
 
 export const Campus = () => {
   return (

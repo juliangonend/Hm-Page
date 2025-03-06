@@ -10,12 +10,10 @@ interface CardProps {
 
 export const Card: React.FC<CardProps> = ({title, img , text}) => {
   const [activeCard , setActiveCard] = useState(true)
-  const [isRotating, setIsRotating] =useState(false);
   const handleChangeCard=()=>{
-      setIsRotating(true)
+     
     setTimeout(()=>{
       setActiveCard(!activeCard);
-      setIsRotating(false);
     }, 300)
   }
   return (

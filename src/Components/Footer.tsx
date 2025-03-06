@@ -1,7 +1,6 @@
-import React from 'react'
-import { Button, Col, Container, Row } from 'react-bootstrap'
-import { CiInstagram } from 'react-icons/ci'
-import { FaWhatsapp } from 'react-icons/fa'
+import {  Container, Row } from 'react-bootstrap'
+// import { CiInstagram } from 'react-icons/ci'
+// import { FaWhatsapp } from 'react-icons/fa'
 
 export const Footer = () => {
   return (

@@ -1,23 +1,26 @@
-import React, {useRef} from 'react'
-import { Alert, Button, Col, Container, Form, Row } from 'react-bootstrap'
+import { Button, Col, Container, Form, Row } from 'react-bootstrap'
 import styles from './Contacts.module.css'
 import emailjs from "@emailjs/browser";
+import { useRef } from 'react';
 export const Contacts = () => {
-  const form = useRef();
+  const form = useRef<HTMLFormElement>(null);
   const sendEmail = (e:any) => {
     e.preventDefault();
-    emailjs
-    .sendForm('service_7uu73vr', 'template_f3fn78p', form.current, {
-      publicKey: 'IL-G6_SY4KHMiCCqM',
-    })
-    .then(
-      () => {
-        alert('Enviado Correctamente ');
-      },
-      (error) => {
-        console.log('FAILED...', error.text);
-      },
-    );
+    if(typeof form.current === 'string'){
+      emailjs
+      .sendForm('service_7uu73vr', 'template_f3fn78p', form.current, {
+        publicKey: 'IL-G6_SY4KHMiCCqM',
+      })
+      .then(
+        () => {
+          alert('Enviado Correctamente ');
+        },
+        (error) => {
+          console.log('FAILED...', error.text);
+        },
+      );
+    }
+ 
   }
   return (
     <div className={`w-100 ${styles.contactsContainer}`} id="contacts" >
@@ -52,7 +55,7 @@ export const Contacts = () => {
               <Col md={6}>
                 <Form.Group controlId="nombre">
                   <Form.Label>Nombre</Form.Label>
-                  <Form.Control  required type="text" placeholder="Nombre" name='user_nombre' />
+                  <Form.Control  required type="text" placeholder="Nombre" name='user_nombre'  />
                   <Form.Control.Feedback type="invalid">
                   ¡Este campo es obligatorio!
                 </Form.Control.Feedback>

@@ -10,7 +10,7 @@ export const AboutUsCard : React.FC<AboutsUsProps> = ({logo,title,text}) => {
     
     <div className={styles.Container}>
         <div className="">
-        <span class="material-symbols-outlined">
+        <span className="material-symbols-outlined">
             {logo}
         </span>
         </div>
