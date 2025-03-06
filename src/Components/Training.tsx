@@ -7,7 +7,7 @@ export const Training = () => {
         <div className='d-flex gap-4 flex-wrap align-items-center justify-content-center'>
             <div>
                 <Card className={styles.card} style={{ width: '14rem' }}>
-                <Card.Img variant="top" src="C:/Users/Usuario/Documents/React/HMpage/public/training-card/card-1.jpeg" />
+                <Card.Img variant="top" src="./training-card/card-1.jpeg" />
                 <Card.Body>
                     <Card.Title>Arqueros</Card.Title>
                     <Card.Text>
@@ -19,7 +19,7 @@ export const Training = () => {
             </div>
             <div>
                 <Card className={styles.card}  style={{ width: '14rem' }}>
-                <Card.Img variant="top" src="C:/Users/Usuario/Documents/React/HMpage/public/training-card/card-2.jpeg" />
+                <Card.Img variant="top" src="./training-card/card-2.jpeg" />
                 <Card.Body>
                     <Card.Title>Jugadores</Card.Title>
                     <Card.Text>
@@ -31,7 +31,7 @@ export const Training = () => {
             </div>
             <div>
                 <Card className={styles.card}  style={{ width: '14rem' }}>
-                <Card.Img variant="top" src="C:/Users/Usuario/Documents/React/HMpage/public/training-card/card-4.jpeg" />
+                <Card.Img variant="top" src="./training-card/card-4.jpeg" />
                 <Card.Body>
                     <Card.Title>Arrastre</Card.Title>
                     <Card.Text>
@@ -43,7 +43,7 @@ export const Training = () => {
             </div>
             <div>
                 <Card className={styles.card}  style={{ width: '14rem' }}>
-                <Card.Img variant="top" src="C:/Users/Usuario/Documents/React/HMpage/public/training-card/card-3.jpeg" />
+                <Card.Img variant="top" src="./training-card/card-3.jpeg" />
                 <Card.Body>
                     <Card.Title>Psicomotricidad</Card.Title>
                     <Card.Text>

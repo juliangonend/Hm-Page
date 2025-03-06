@@ -5,7 +5,7 @@ export const NavBar = () => {
     <Navbar expand="lg" className="bg-body-tertiary start" bg="dark" data-bs-theme="dark" style={{height:'10%'}} sticky='top'>
       <Container>
         <Navbar.Brand href="#" className={styles.navbarTitle}>
-            <img src="C:/Users/Usuario/Documents/React/HMpage/public/logo-hm.png" alt=""
+            <img src="/logo-hm.png" alt=""
             style={{width:"15%", marginRight:"5%"}} />
             Hockey Management</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

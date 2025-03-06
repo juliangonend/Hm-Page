@@ -7,7 +7,7 @@ export const Header = () => {
     <Carousel  className={style.carrusel} >
       <Carousel.Item className="d-block w-100 h-100">
          <div  className={style.carruselImage}>
-         <img src="C:/Users/Usuario/Documents/React/HMpage/public/header/img-1.jpeg" alt="" />
+         <img src="./header/img-1.jpeg" alt="" />
          </div>
       {/* <Carousel.Caption>
           <h3>First slide label</h3>
@@ -16,7 +16,7 @@ export const Header = () => {
       </Carousel.Item>
       <Carousel.Item>
          <div className={style.carruselImage}>
-            <img src="C:/Users/Usuario/Documents/React/HMpage/public/header/img-4.jpeg" alt="" />
+            <img src="./header/img-4.jpeg" alt="" />
          </div>
       {/* <Carousel.Caption>
           <h3>Second slide label</h3>
@@ -25,7 +25,7 @@ export const Header = () => {
       </Carousel.Item>
       <Carousel.Item>
       <div className={style.carruselImage}>
-        <img src="C:/Users/Usuario/Documents/React/HMpage/public/header/img-3.jpeg" alt="" className={style.carruselImage}/>
+        <img src="./header/img-3.jpeg" alt="" className={style.carruselImage}/>
       </div>
         {/* <Carousel.Caption>
           <h3>Third slide label</h3>

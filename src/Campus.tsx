@@ -6,7 +6,7 @@ export const Campus = () => {
       <Container fluid className='w-100 px-0 ' style={{backgroundColor:'black'}}>
         <Row className='w-100 m-0'>
           <Col md={6} className="p-0 d-flex justify-content-center align-items-center" style={{height:'100%'}}>
-            <img src="C:/Users/Usuario/Documents/React/HMpage/public/canpus.jpeg" alt="" className="img-fluid"  />
+            <img src="/canpus.jpeg" alt="" className="img-fluid"  />
           </Col>
           <Col md={6} style={{color:'white'}} className='d-flex flex-column justify-content-start mt-4 gap-5'>
             <h3 className='text-center'>Campus Mensuales</h3>
