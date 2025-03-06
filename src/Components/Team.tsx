@@ -41,18 +41,18 @@ export const Team = () => {
          <div className="" style={{color:'white', fontFamily:'20px'}}>Algunos Equipos que confiaron en nosotros</div>
          <Row className={`justify-content-center `}>
             <Col xs={4}>
-              <img src="../public/logos/pwcc.jpeg" className={`img-fluid ${styles.teamImg}`} alt="" />
+              <img src="C:/Users/Usuario/Documents/React/HMpage/public/logos/pwcc.jpeg" className={`img-fluid ${styles.teamImg}`} alt="" />
             </Col>
             <Col xs={4}>
-              <img src="../public/logos/regatas.png" className={`img-fluid ${styles.teamImg}`} alt=""  />
+              <img src="C:/Users/Usuario/Documents/React/HMpage/public/logos/regatas.png" className={`img-fluid ${styles.teamImg}`} alt=""  />
             </Col>
           </Row>
           <Row className='justify-content-center'>
             <Col xs={4}>
-              <img src="../public/logos/regatas.png" className={`img-fluid ${styles.teamImg}`} alt="" />
+              <img src="C:/Users/Usuario/Documents/React/HMpage/public/logos/regatas.png" className={`img-fluid ${styles.teamImg}`} alt="" />
             </Col>
             <Col xs={4}>
-              <img src="../public/logos/pwcc.jpeg" className={`img-fluid ${styles.teamImg}`} alt="" />
+              <img src="C:/Users/Usuario/Documents/React/HMpage/public/logos/pwcc.jpeg" className={`img-fluid ${styles.teamImg}`} alt="" />
             </Col>
           </Row>
         </Col>
