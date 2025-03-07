@@ -4,7 +4,7 @@ import emailjs from "@emailjs/browser";
 import { useRef } from 'react';
 export const Contacts = () => {
   const form = useRef(null);
-  const sendEmail = (e) => {
+  const sendEmail = (e:any) => {
     e.preventDefault();
     if(typeof form.current === 'string'){
       emailjs
