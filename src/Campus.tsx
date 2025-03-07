@@ -2,9 +2,9 @@ import { Col, Container, Row } from 'react-bootstrap';
 
 export const Campus = () => {
   return (
-   <div className='w-100 align-items-center' id="campus">
-      <Container fluid className='w-100 px-0 ' style={{backgroundColor:'black'}}>
-        <Row className='w-100 m-0'>
+   <div className='w-100 align-items-center' id="campus" >
+      <Container fluid className='w-100 px-0 bg-dark'>
+        <Row className='w-100 m-0 '>
           <Col md={6} className="p-0 d-flex justify-content-center align-items-center" style={{height:'100%'}}>
             <img src="./canpus.jpeg" alt="" className="img-fluid"  />
           </Col>

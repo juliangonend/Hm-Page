@@ -3,8 +3,8 @@ import styles from './Contacts.module.css'
 import emailjs from "@emailjs/browser";
 import { useRef } from 'react';
 export const Contacts = () => {
-  const form = useRef<HTMLFormElement>(null);
-  const sendEmail = (e:any) => {
+  const form = useRef(null);
+  const sendEmail = (e) => {
     e.preventDefault();
     if(typeof form.current === 'string'){
       emailjs

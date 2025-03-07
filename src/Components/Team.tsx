@@ -4,7 +4,7 @@ import styles from './Team.module.css'
 export const Team = () => {
   return (
     <div className='w-100' id="teams">
-    <Container fluid className='w-100 px-0 ' style={{backgroundColor:'black'}}>
+    <Container fluid className='w-100 px-0   bg-dark' >
       <Row className='w-100'>
         <Col md={6} style={{color:'white'}} className='d-flex flex-column justify-content-start mt-5 px-5 gap-3'>
           <h3>Equipos</h3>
