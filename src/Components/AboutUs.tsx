@@ -20,10 +20,7 @@ export const AboutUs = () => {
               <p>
               Vivimos el hockey con pasión y compromiso. Nos dedicamos a acompañar a jugadores, jugadoras y clubes en su crecimiento, ofreciendo servicios diseñados para impulsar una mejora constante y sostenida a lo largo del tiempo.
             </p>
-
-
-
-            <Button  style={{backgroundColor:'var(--primary-color', width:'50%'}}  onClick={handleScrollToContact}>Contactanos</Button>
+            <Button  className={style.button}  onClick={handleScrollToContact}>Contactanos</Button>
             </Container>
            </Col>
         </Row>

@@ -14,6 +14,11 @@ h2{
     font-size: 25px;
     font-weight: bolder;
 }
+.button{
+background-color:'var(--primary-color';
+width:50%;
+}
+
  @media only screen and  (max-width: 600px){
 .img{
     width: 100%;
@@ -31,5 +36,7 @@ h2{
          background-color: var(--primary-color);
     border-radius: 0  40% 0% 0;
 }
-
+.button{
+    width:75%;
+    }
 }

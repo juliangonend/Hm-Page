@@ -13,7 +13,7 @@ export const CoFunders = () => {
             />
             <Card name='Cristian' lastName="Gonzalez" 
             img='./cristianfoto3.webp'
-            text={['Primera división Honor Club Hockey Sanse Complutense','Ex-asistente seleccionado mayor caballeros Chile','Ex-coordinador PWCC']}
+            text={['Primera división Honor Club Hockey Sanse Complutense','Medalla de Plata Panamericana 2023','Mundial Odisha 2023']}
             />
          </div>
    </div>
