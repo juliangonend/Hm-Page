@@ -1,6 +1,7 @@
 html, body {
 
   scroll-behavior: smooth;
+
 }
 
 body{
@@ -19,7 +20,7 @@ body{
       scroll-margin-top: 37vh;
 
     }
-    body{
+    html,body{
             overflow-x: hidden;
     }
   }

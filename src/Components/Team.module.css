@@ -1,9 +1,4 @@
-.teamImg{
- transition: transform 0.8s ease;   
-}
-.teamImg:hover{
-    transform: scale(1.08);
-}
+
 
 .button{
 
@@ -24,6 +19,73 @@ border-radius:0 0 0 5%  ;
       font-weight: 700;
 }
 
-.body{
-    background-color: var(--grey-color);
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  padding: 3rem 1rem; /* equivale a Bootstrap p-5 */
+  gap: 10%; /* equivale a Bootstrap gap-3 */
+  background-color: var(--grey-color);
 }
+.title{
+    height:300px ;
+    display: flex;
+    flex-direction: column;
+    gap: 10%;
+
+}
+.title h3{
+    font-size: 25px;
+}
+.nav{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.cardNav{
+    width: 50%;
+}
+.cardContainer{
+    height: 25%;
+    padding-top: 3%;
+}
+ @media only screen and  (max-width: 600px){
+
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 3rem  1rem; /* equivale a Bootstrap p-5 */
+  gap: 2rem; /* equivale a Bootstrap gap-3 */
+  height: 75%;
+}
+
+.img{
+border-radius: 5% 5% 0 0 ;
+/* border-top: 5px solid var(--primary-color); */
+}
+.nav{
+  flex-wrap: wrap;
+  gap: 0;
+}
+.cardNav{
+    padding-top: 0%;
+    width: 50%;
+}
+.cardContainer{
+    height: 25%;
+    padding-top: 10%;
+}
+
+.title{
+    height:75% ;
+    display: flex;
+    padding: 10% auto;
+    gap: 6%;
+
+}
+
+
+ }

@@ -17,16 +17,20 @@
 
 @media only screen and  (max-width: 600px) {
   .nav {
-  height: 10%;
+  height: auto;
   font-weight: bold;
  background-color: #134471c3;
+ padding: 5%;
+ width: 100%;
+ 
   }
   .navbarTitle{
-  width: 70%;
+  width: 50%;
 }
 .navCollapseMobile {
  background-color: #134471c3;
-  gap: 5%;
+  gap: 1%;
+  margin-top: 12%;
 }
 .navLinks{
   padding-left: 1rem;

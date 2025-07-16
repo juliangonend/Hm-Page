@@ -12,29 +12,29 @@ const changeActive = (id: number) => {
 
   return (
     <div className={`w-100 align-items-center ${style.campusContainer}`} id="ourServices">
-      <Container fluid className='w-100 py-5 px-4  mt-4'>
+      <Container fluid className='w-100 py-5 px-4  mt-4 '>
         <Row className='w-100 m-0 h-100'>
-            <Col md={6}  className={`d-flex flex-column justify-content-center h-100  p-5 gap-3 `}  >
-                <div className={`${style.title} d-flex flex-column  py-1 justify-content-between `}>
+            <Col md={6}  className={`${style.textContainer} `}  >
+                <div className={`${style.title}  d-flex flex-column py-1  justify-content-between  `}>
                      <h3>Mucho mas que <br/><b>Entrenamientos de Hockey </b></h3>
                     <p>En Hockey Management nos enfocamos en el perfeccionamiento integral de cada jugador y jugadora, adaptando los entrenamientos a su nivel. Contamos con prácticas específicas de psicomotricidad, arrastre, técnicas para jugadores de campo, arqueros y mucho más.</p>
-                    <div className={`${style.nav} d-flex align-items-center  justify-content-center w-100`}>
-                      <div className={`${style.cardNav} w-25`}>
+                    <div className={`${style.nav} `}>
+                      <div className={`${style.cardNav} `}>
                         <button className={`${style.button} ${cardActive[0] ? `${style.active}` : ''}`}  onClick={()=>changeActive(0)}>Jugadores</button>
                       </div>
-                      <div className={`${style.cardNav} w-25`}>
+                      <div className={`${style.cardNav} `}>
                         <button className={`${style.button} ${cardActive[1] ? `${style.active}` : ''}`}  onClick={()=>changeActive(1)}>Arqueros</button>
                       </div>
-                      <div className={`${style.cardNav} w-25`}>
+                      <div className={`${style.cardNav} `}>
                         <button className={`${style.button} ${cardActive[2] ? `${style.active}` : ''}`}  onClick={()=>changeActive(2)}>Psicomotricidad</button>
                       </div>
-                      <div className={`${style.cardNav} w-25`}>
+                      <div className={`${style.cardNav} `}>
                         <button className={`${style.button} ${cardActive[3] ? `${style.active}` : ''}`}  onClick={()=>changeActive(3)}>Arrastradores</button>
                       </div>
                     </div>
                 </div>
 
-                <div className=" h-25  gap-5">
+                <div className={style.cardContainer}>
                      <TrainingCard 
                     title="Arqueros" 
                     text="Desarrollá todo tu potencial como arquero con entrenamientos 

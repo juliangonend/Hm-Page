@@ -17,8 +17,8 @@ export const Team = () => {
             <Col md={6} className={`p-0 d-flex justify-content-center align-items-center ${style.imgContainer}`}  style={{height:'100%', overflow:'hidden'}}>
             <img src="./header/img-7.jpg" alt="" className={`img-fluid ${style.img}`}  />
           </Col>
-            <Col md={6}  className={`d-flex flex-column justify-content-center   pt-5 p-5  ${style.body}`}  >
-                <div className={`${style.title} d-flex flex-column py-5  justify-content-between h-100 gap-3  `}>
+            <Col md={6}  className={`${style.textContainer}`}  >
+                <div className={`${style.title}    `}>
                      <h3><b>Potenciamos tu club </b></h3>
                      <p>
                       En Hockey Management acompañamos a tu club con propuestas flexibles, adaptadas a su presupuesto.
@@ -27,29 +27,30 @@ export const Team = () => {
                        Te ayudamos a mejorar el nivel, el sentido de pertenencia y el clima de trabajo en tu institución.
                       </p>
 
-                    <div className={`${style.nav} d-flex align-items-center  justify-content-center w-100`}>
-                      <div className={`${style.cardNav} w-50`}>
+                    <div className={`${style.nav} `}>
+                      <div className={`${style.cardNav} `}>
                         <button className={`${style.button} ${cardActive[0] ? `${style.active}` : ''}`}  onClick={()=>changeActive(0)}>Asesoramiento</button>
                       </div>
-                      <div className={`${style.cardNav} w-50`}>
+                      <div className={`${style.cardNav} `}>
                         <button className={`${style.button} ${cardActive[1] ? `${style.active}` : ''}`}  onClick={()=>changeActive(1)}>Giras Deportivas</button>
                       </div>
                     </div>
-
-                     <TrainingCard
-                    title="Asesoramiento" 
-                    text="Brindamos las herramientas necesarias para tu club, federación o asociación.
-                    Planificamos, organizamos y fortalecemos la institución, capacitando al personal 
-                    para alcanzar los objetivos propuestos."
-                    active={cardActive[0]}
-                    />
-                     <TrainingCard 
-                    title="Giras Deportivas" 
-                    text="Nos encargamos de organizar giras deportivas integrales para tu institución,
-                     con partidos, actividades, comidas, alojamiento y más. Diseñadas para que solo se 
-                     dediquen a disfrutar, y adaptadas a cualquier presupuesto y necesidad."
-                    active={cardActive[1]}
-                    />
+                   <div className={style.cardContainer}>
+                      <TrainingCard
+                      title="Asesoramiento" 
+                      text="Brindamos las herramientas necesarias para tu club, federación o asociación.
+                      Planificamos, organizamos y fortalecemos la institución, capacitando al personal 
+                      para alcanzar los objetivos propuestos."
+                      active={cardActive[0]}
+                      />
+                      <TrainingCard 
+                      title="Giras Deportivas" 
+                      text="Nos encargamos de organizar giras deportivas integrales para tu institución,
+                      con partidos, actividades, comidas, alojamiento y más. Diseñadas para que solo se 
+                      dediquen a disfrutar, y adaptadas a cualquier presupuesto y necesidad."
+                      active={cardActive[1]}
+                      />
+                    </div>
                 </div>
              </Col>
 
