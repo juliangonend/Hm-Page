@@ -1,28 +1,9 @@
-import { Button, Form, Row } from 'react-bootstrap'
+import { Button, Form } from 'react-bootstrap'
 import styles from './Contacts.module.css'
-import emailjs from "@emailjs/browser";
-import { useRef } from 'react';
-import { FaInstagram, FaMobileAlt, FaPhoneAlt, FaTiktok, FaWhatsapp } from 'react-icons/fa';
+
+import { FaInstagram, FaPhoneAlt, FaTiktok, FaWhatsapp } from 'react-icons/fa';
 export const Contacts = () => {
-  const form = useRef(null);
-  const sendEmail = (e:any) => {
-    e.preventDefault();
-    if(typeof form.current === 'string'){
-      emailjs
-      .sendForm('service_7uu73vr', 'template_f3fn78p', form.current, {
-        publicKey: 'IL-G6_SY4KHMiCCqM',
-      })
-      .then(
-        () => {
-          alert('Enviado Correctamente ');
-        },
-        (error) => {
-          console.log('FAILED...', error.text);
-        },
-      );
-    }
- 
-  }
+
   return (
     <div className={`${styles.contactsContainer}`} id="contacts" >
       <div className={`${styles.backgroundContainer}`}></div>

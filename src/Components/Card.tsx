@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './Card.module.css'
-import { Button } from 'react-bootstrap';
 import 'animate.css';
 interface CardProps {
     name: string;

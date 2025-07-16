@@ -1,4 +1,4 @@
-import {  Col, Container, Row } from 'react-bootstrap'
+import {  Col, Container } from 'react-bootstrap'
 // import { CiInstagram } from 'react-icons/ci'
 // import { FaWhatsapp } from 'react-icons/fa'
 
