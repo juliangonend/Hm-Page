@@ -7,7 +7,7 @@
   /* text-shadow: -1px -1px 0 #ffffff; */
 }
 .navbarTitle{
-  width: 70%;
+  width: auto;
 }
 
 .nav :global(.nav-link) {
@@ -21,6 +21,9 @@
   font-weight: bold;
  background-color: #134471c3;
   }
+  .navbarTitle{
+  width: 70%;
+}
 .navCollapseMobile {
  background-color: #134471c3;
   gap: 5%;
