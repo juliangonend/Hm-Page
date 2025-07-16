@@ -3,7 +3,7 @@ import { Col, Container, Row } from 'react-bootstrap'
 import style from './Team.module.css'
 import { useState } from 'react';
 import { TrainingCard } from './TrainingCard';
-import './globalsStyles.module.css'
+import './globalsStyles.css'
 export const Team = () => {
     const [cardActive, setCardActive] = useState([true,false,false,false]) 
   const changeActive = (id: number) => {

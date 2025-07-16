@@ -1,6 +1,6 @@
 import {  Col, Container, Row } from 'react-bootstrap';
 import style from './Campus.module.css'
-import './Components/globalsStyles.module.css';
+import './Components/globalsStyles.css';
 import { TrainingCard } from './Components/TrainingCard';
 import { useState } from 'react';
 export const Campus = () => {

@@ -1,7 +1,11 @@
 import { Button, Col, Container, Row } from "react-bootstrap"
 import style from "./AboutUs.module.css";
-import './globalsStyles.module.css';
+import './globalsStyles.css';
 export const AboutUs = () => {
+   const handleScrollToContact = () => {
+    const section = document.getElementById('contacts');
+    section?.scrollIntoView({ behavior: 'smooth' });
+  };
   return (
     <>
     <Container fluid id="aboutUs" style={{margin:'2% 0',gap:'3vh', height:'50' }} className='d-flex flex-column  w-100 align-items-center'>
@@ -19,7 +23,7 @@ export const AboutUs = () => {
 
 
 
-            <Button className='w-50' style={{backgroundColor:'var(--primary-color'}}>Contactanos</Button>
+            <Button  style={{backgroundColor:'var(--primary-color', width:'50%'}}  onClick={handleScrollToContact}>Contactanos</Button>
             </Container>
            </Col>
         </Row>
