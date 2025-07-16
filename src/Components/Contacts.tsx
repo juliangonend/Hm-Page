@@ -26,12 +26,12 @@ export const Contacts = () => {
   return (
     <div className={`${styles.contactsContainer}`} id="contacts" >
       <div className={`${styles.backgroundContainer}`}></div>
-      <div className={`${styles.containerText} w-100 h-100 `}>
+      <div className={`${styles.containerText} h-100 `}>
         <h2 className={styles.contactsTitle}>Vivi la Experiencia Hockey Management</h2>
-        <p className={styles.containetText}>Completá tu mail y te contaremos cómo formar parte</p>
-        <Form className="d-flex w-50 align-items-center justify-content-center gap-3">
+        <p className={``}>Completá tu mail y te contaremos cómo formar parte</p>
+        <Form className={styles.form}>
           <Form.Control type="email" placeholder="email@email.com" style={{ maxWidth: '400px' , paddingLeft:'25px'}} />
-          <Button className='w-25' style={{backgroundColor: 'var(--primary-color)',}} type="submit">Enviar</Button>
+          <Button className={styles.button} style={{backgroundColor: 'var(--primary-color)',}} type="submit">Enviar</Button>
         </Form>
         <div className={styles.socialMedia}>
             <FaPhoneAlt   size={40} color="white" />

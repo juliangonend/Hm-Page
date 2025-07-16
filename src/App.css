@@ -17,6 +17,10 @@ body{
 @media only screen and  (max-width: 600px){
     *{
       scroll-margin-top: 37vh;
+
+    }
+    body{
+            overflow-x: hidden;
     }
   }
 body::-webkit-scrollbar {

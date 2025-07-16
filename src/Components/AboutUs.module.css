@@ -14,3 +14,22 @@ h2{
     font-size: 25px;
     font-weight: bolder;
 }
+ @media only screen and  (max-width: 600px){
+.img{
+    width: 100%;
+    height: auto;
+    left: 10%;
+    right: 0;
+    bottom: -5%;
+    transform: scale(1.4);
+    position: relative;
+
+}
+.imgContainer{
+    position: relative;
+     width: 100%;
+         background-color: var(--primary-color);
+    border-radius: 0  40% 0% 0;
+}
+
+}

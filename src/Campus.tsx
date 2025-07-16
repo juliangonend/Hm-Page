@@ -11,7 +11,7 @@ const changeActive = (id: number) => {
 };
 
   return (
-   <div className='w-100 align-items-center' id="campus" >
+    <div className={`w-100 align-items-center ${style.campusContainer}`} id="ourServices">
       <Container fluid className='w-100 py-5 px-4  mt-4'>
         <Row className='w-100 m-0 h-100'>
             <Col md={6}  className={`d-flex flex-column justify-content-center h-100  p-5 gap-3 `}  >

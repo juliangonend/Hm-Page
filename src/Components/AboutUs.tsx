@@ -7,7 +7,7 @@ export const AboutUs = () => {
     <Container fluid id="aboutUs" style={{margin:'2% 0',gap:'3vh', height:'50' }} className='d-flex flex-column  w-100 align-items-center'>
       <Row className="w-100 m-0">
             <Row className="top">
-        <Col className="img-container" md={6}>
+        <Col className={style.imgContainer} md={6}>
           <img src="./judarora-sinfondo.png" alt=""  className={style.img}/>
         </Col>
         <Col md={6}>

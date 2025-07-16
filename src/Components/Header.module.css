@@ -17,7 +17,6 @@
   text-transform: uppercase;
   letter-spacing: 2px;
   padding: 10px 20px;
-  border-radius: 10px;
 }
 
  .carruselImage {
@@ -43,4 +42,12 @@
       width: 130%;
       overflow: hidden;
    }
+   .title {
+      bottom: 1700%;
+      left: -15%;
+      font-size: 30px;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      }
  }
