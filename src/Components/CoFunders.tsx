@@ -4,16 +4,16 @@ import { Card } from "./Card"
 export const CoFunders = () => {
   return (
    <>
-    <div style={{marginTop:'20px' , marginRight:'10px', marginLeft:'10px'}}>
-        <h2 className='w-100 d-flex justify-content-center'>Co-Fundadores</h2>
-         <div className='d-flex w-100 justify-content-center align-items-center flex-wrap'>
-            <Card title='Jose Gonzalez'
-             img='./card/card-2.jpeg' 
-            text={['entrenador platel superior UNCUYO','coordinar seleccionados menores Mendoza','Ex-entrenador leoncitas en JJOO']}
+    <div style={{margin:'20px'}}>
+        <h2 className='w-100  text-center fs-1'>Co-Fundadores</h2>
+         <div className='d-flex w-100 justify-content-center align-items-center flex-wrap gap-5'>
+            <Card name='Jose' lastName="Gonzalez"          
+               img='./jose-sinfondo2.png' 
+            text={['Primera división damas -UNCUYO','Head Coach Damas AMHSC','Director Regional CAH Centro-cuyo']}
             />
-            <Card title='Cristian Gonzalez ' 
-            img='./card/card-1.jpeg' 
-            text={['Entrenador plantel superior Club Hockey Sanse Complutense','Ex-asistente seleccionado mayor caballeros Chile','Ex-coordinador PWCC']}
+            <Card name='Cristian' lastName="Gonzalez" 
+            img='./cristianfoto2.png'
+            text={['Primera división Honor Club Hockey Sanse Complutense','Ex-asistente seleccionado mayor caballeros Chile','Ex-coordinador PWCC']}
             />
          </div>
    </div>

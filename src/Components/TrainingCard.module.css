@@ -1,0 +1,23 @@
+
+.Container{
+    padding: 0 ;
+    font-size: 18px;
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: space-between;
+}
+h2{
+    font-size: 22px;
+}
+
+
+@media only screen and  (max-width: 600px){
+
+    .containerText{
+        font-size: 12px;
+    }
+}

@@ -2,11 +2,55 @@
     font-size: 16px;
     
 }
+.contactsContainer{
+    position: relative;
+    height: 50vh;
+    
+}
+.backgroundContainer{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-top: 3px solid lightblue;
+    background-image:url('../../public/header/header-1.jpg');
+    background-size: cover;
+    background-position:center  bottom 10% ;
+    filter: blur(3px);
+}
+.backgroundContainer::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.309); /* Negro con 40% de opacidad */
+    z-index: 2;
+}
+.containerText{
+    position: relative;
+    color: white;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
 .contactsTitle{
-    font-size: 20px;
+    font-size: 30px;
+    font-weight: bolder;
+    font-family: "Seymour One" , sans-serif;
+
+}
+.containetText{
+     font-size: 20px;
     font-weight: 500;
 }
-.contactsContainer{
-    border-top: 3px solid lightblue;
-    border-bottom: 3px solid lightblue;
+.socialMedia{
+    margin-top: 30px;
+    display: flex;
+    width: 25%;
+    align-items: center;
+    justify-content: center;
+    gap: 5%;
 }

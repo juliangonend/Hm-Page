@@ -1,7 +1,11 @@
+.nav {
+  height: 10%;
+  font-weight: bold;
+  background-color: #1344716d;
+  /* text-shadow: -1px -1px 0 #ffffff; */
+}
 
-@media only screen and  (max-width: 600px){
-    .navbarTitle{
-        width: 70%;
-    } 
-
+.nav :global(.nav-link) {
+  color: white !important;
+  text-shadow: 0 -1px 0 #000;
 }

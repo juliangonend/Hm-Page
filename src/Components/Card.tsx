@@ -3,43 +3,32 @@ import styles from './Card.module.css'
 import { Button } from 'react-bootstrap';
 import 'animate.css';
 interface CardProps {
-    title: string;
+    name: string;
+    lastName: string;
     img: string;
     text:string[];
   }
 
-export const Card: React.FC<CardProps> = ({title, img , text}) => {
-  const [activeCard , setActiveCard] = useState(true)
-  const handleChangeCard=()=>{
-     
-    setTimeout(()=>{
-      setActiveCard(!activeCard);
-    }, 300)
-  }
+export const Card: React.FC<CardProps> = ({name,lastName, img , text}) => {
+
   return (
     <div className={`${styles.card}`}>
-       {activeCard ?  <div className={styles.cardContainer}>
-            <div className={styles.cardImg}>
-                <img src={img} alt="" />
-            </div>
+      <div className={styles.cardContainer}>
+
             <div className={styles.cardText}>
-                <h2>{title}</h2>
-                {/* <p>{text}</p> */}
-                <Button onClick={handleChangeCard} variant='outline-dark'>Carrera</Button>
-            </div>
-        </div>
-        : <div className={`${styles.cardContainer} bg-dark justify-content-center ` } style={{opacity:'.9'}}>
-        <div className={`${styles.cardTextBack} animate__animated animate__backInLeft `}>
-            <h2 className=''>{title}</h2>
-            <ul>
+                <h2><span className={styles.name}>{name}</span> <span className={styles.lastName}>{lastName}</span></h2>
+                <div className={styles.textContainer}> <p>Entrenador</p></div>
+                 <ul>
               {text.map((item,index)=>(
                 <li key={index}>{item}</li>
               ))}
             </ul>
-            <Button onClick={handleChangeCard} variant='outline-primary'>{activeCard ? 'Carrera' : 'Volver'}</Button>
+            </div>
+                        <div className={styles.cardImg}>
+                <img src={img} alt="" />
+            </div>
         </div>
-    </div>
-    }
+       
     </div>
   )
 }

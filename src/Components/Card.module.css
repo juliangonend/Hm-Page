@@ -1,16 +1,15 @@
 .cardContainer{
-    margin:5vh ;
+    margin:5vh 2vh ;
     display: flex;
     flex-direction: row;
     gap: 2%;
     align-items: center;
-    width: 35vw;
+    width: 40vw;
     justify-content: start;
-    gap: 5%;
-    height: 35vh;
+    height: 40vh;
     border-radius: 10px;
-    border: 2px solid rgb(5, 5, 73);
-    overflow: hidden;
+    box-shadow: 0 0 5px var(--primary-color);
+    border-bottom: 5px solid var(--secondary-color);
     transition: transform 0.3s ease;
 }
 
@@ -19,22 +18,44 @@
 }
 
 .cardImg{
-    width: 50%;
+    width: 20%;
     height: 100%;
-    overflow: hidden;
+    /* overflow: hidden; */
+    position: relative;
 }
 .cardImg img{
+  bottom: 10%;
+  right: -300%;
+  position: absolute;
   height: 100%;
+  transform: scale(1.5);
 }
 .cardText{
-  width: 40%;
+  width: 80%;
+
 }
 .cardText h2{
-  font-size: 20px;
+  font-size: 35px;
   font-weight: bold;
+  padding-left:5% ;
 }
-.cardText p{
-  font-size: 15px;
+.cardText ul{
+  width: 80%;
+  list-style: none;
+  color: #0445b4ee;
+  font-size: 16px;
+  text-shadow: 0 -1px 0 #c4c4c4;
+
+}
+.name{
+  color: var(--secondary-color);
+}
+.textContainer{
+  background-color:  var(--secondary-color);
+}
+.textContainer p{
+  font-size: 18px;
+  padding-left: 10%;
 }
 .cardTextBack{
   color:aliceblue;

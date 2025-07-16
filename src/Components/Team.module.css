@@ -4,3 +4,26 @@
 .teamImg:hover{
     transform: scale(1.08);
 }
+
+.button{
+
+    border: none;
+    border-bottom: 1px solid grey;
+    font-size: 18px;
+    color: grey;
+    font-weight: 500;
+    width: 100%;
+
+}
+.img{
+border-radius:0 0 0 5%  ;
+}
+.active{
+    color: var(--primary-color);
+    border-bottom: 1px solid var(--primary-color);
+      font-weight: 700;
+}
+
+.body{
+    background-color: var(--grey-color);
+}

@@ -1,15 +1,28 @@
 .carruselItem {
     width: 100vw;
-    height: 92vh;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
  }
- 
+.title {
+  position: absolute;
+  bottom: 1000%;
+  left: -10%;
+  font-size: 70px;
+  font-family: "Seymour One" , sans-serif;
+  color: #ffffff;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+
  .carruselImage {
     width: 100%;
-    height: 92vh; /* Asegúrate de que el contenedor tenga una altura fija */
+    height: 100vh; /* Asegúrate de que el contenedor tenga una altura fija */
     overflow: hidden;
 }
  
@@ -17,12 +30,12 @@
     width: 100%;
     height: auto; /* Forza la altura de la imagen */
     object-fit: cover; /* Asegura que la imagen cubra el contenedor */
-    object-position: top;
+    object-position: right;
  }
  
  @media only screen and  (max-width: 600px){
    .carrusel {
-      height: 60vh;
+      height: 45vh;
       margin-bottom: 3%;
       overflow: hidden;
    }

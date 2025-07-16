@@ -1,13 +1,19 @@
+html, body {
+
+  scroll-behavior: smooth;
+}
 
 body{
     font-family: "Poppins", sans-serif;
     overflow-x: hidden;
+    background-color: #ffffff;
   }
   *{
   scroll-margin-top: 15vh;
   margin:0;
   padding:0;
 }
+
 @media only screen and  (max-width: 600px){
     *{
       scroll-margin-top: 37vh;
@@ -27,5 +33,3 @@ body::-webkit-scrollbar {
     outline: 1px solid slategrey;
     border-radius: 10px;
   }
-  body ::-webkit-scrollbar-button addresses the directional buttons on the scrollbar
-  

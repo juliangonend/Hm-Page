@@ -7,33 +7,28 @@ export const Header = () => {
     <Carousel  className={style.carrusel} >
       <Carousel.Item className="d-block w-100 h-100">
          <div  className={style.carruselImage}>
-         <img src="./header/img-1.jpeg" alt="" />
+         <img src="./header/header-1.jpg" alt="" />
          </div>
-      {/* <Carousel.Caption>
-          <h3>First slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-        </Carousel.Caption> */}
+       <Carousel.Caption>
+         <h3 className={style.title}>SE JUEGA COMO<br/> SE ENTRENA</h3>
+        </Carousel.Caption> 
       </Carousel.Item>
       <Carousel.Item>
          <div className={style.carruselImage}>
-            <img src="./header/img-4.jpeg" alt="" />
+            <img src="./header/header-2.jpg" alt="" />
          </div>
-      {/* <Carousel.Caption>
-          <h3>Second slide label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </Carousel.Caption> */}
+      <Carousel.Caption>
+         <h3  className={style.title}>SE JUEGA COMO<br/> SE ENTRENA</h3>
+        </Carousel.Caption> 
       </Carousel.Item>
-      <Carousel.Item>
+      {/* <Carousel.Item>
       <div className={style.carruselImage}>
-        <img src="./header/img-3.jpeg" alt="" className={style.carruselImage}/>
+        <img src="./header/header-3.jpg" alt="" className={style.carruselImage}/>
       </div>
-        {/* <Carousel.Caption>
-          <h3>Third slide label</h3>
-          <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-          </p>
-        </Carousel.Caption> */}
-      </Carousel.Item>
+        <Carousel.Caption>
+         <h3  className={style.title}>SE JUEGA COMO<br/> SE ENTRENA</h3>
+        </Carousel.Caption> 
+      </Carousel.Item> */}
     </Carousel>
     </>
   )

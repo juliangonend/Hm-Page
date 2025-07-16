@@ -1,20 +1,57 @@
-
-import styles from "./AboutUs.module.css"
-import { AboutUsCard } from './AboutUsCard'
+import { Button, Col, Container, Row } from "react-bootstrap"
+import style from "./AboutUs.module.css";
+import './globalsStyles.module.css';
 export const AboutUs = () => {
   return (
     <>
-    <div id="aboutUs" style={{margin:'2% 0',gap:'3vh'}} className='d-flex flex-column justify-content-center w-100 align-items-center'>
-        <h2 className='d-flex justify-content-center w-100'>Sobre Nosotros</h2>
-        <div className= {styles.containerText}>
-            <p >Somos un equipo de entrenadores dedicados a mejorar el rendimiento tanto de los jugadores como de los equipos y clubes. Nuestro enfoque se basa en optimizar cada aspecto del deporte, asegurándonos de que el progreso individual y colectivo se refleje en el desempeño en el campo. Por eso, nuestro lema es: Se juega como se entrena.</p>
-        </div>
-        <div className="w-100 d-flex align-items-center justify-content-center flex-wrap gap-5">
-            <AboutUsCard logo='person' title='Jugador' text='entrenamientos personalizados para todos los jugadores y edades '/>
-            <AboutUsCard logo='groups' title='Equipos' text='dirección , asesoramiento y coordinacion de clubes , seleccionados ,etc'/>
-            <AboutUsCard logo='map' title='Giras Deportivas' text='organizamos y coordinamos girar deportivas personalizadas'/>
-        </div>
-    </div>
+    <Container fluid id="aboutUs" style={{margin:'2% 0',gap:'3vh', height:'50' }} className='d-flex flex-column  w-100 align-items-center'>
+      <Row className="w-100 m-0">
+            <Row className="top">
+        <Col className="img-container" md={6}>
+          <img src="./judarora-sinfondo.png" alt=""  className={style.img}/>
+        </Col>
+        <Col md={6}>
+           <Container className="text d-grid w-100 h-100 p-5">
+              <h2>Sobre Hockey Management</h2>
+              <p>
+              Vivimos el hockey con pasión y compromiso. Nos dedicamos a acompañar a jugadores, jugadoras y clubes en su crecimiento, ofreciendo servicios diseñados para impulsar una mejora constante y sostenida a lo largo del tiempo.
+            </p>
+
+
+
+            <Button className='w-50' style={{backgroundColor:'var(--primary-color'}}>Contactanos</Button>
+            </Container>
+           </Col>
+        </Row>
+          <Row className={`${style.bottom} text-white text-center py-4 `}>
+            <Col md={6}>
+            </Col>
+            <Col md={6}>
+              <Row>
+                <Col md={3} sm={6} className="mb-3">
+                  <span className="fs-3 d-block">3</span>
+                  <p>Sedes en Argentina, Chile y España</p>
+                  {/* <p className={style.border}></p> */}
+                </Col>
+                <Col md={3} sm={6} className="mb-3">
+                  <span className="fs-3 d-block">300+</span>
+                  <p>Jugadores</p>
+                </Col>
+                <Col md={3} sm={6} className="mb-3">
+                  <span className="fs-3 d-block">6+</span>
+                  <p>Giras deportivas realizadas</p>
+                </Col>
+                <Col md={3} sm={6} className="mb-3">
+                  <span className="fs-3 d-block">10+</span>
+                  <p>Años de trayectoria</p>
+                </Col>
+              </Row>
+            </Col>
+            </Row>
+
+
+      </Row>
+    </Container>
 
     </>
   )

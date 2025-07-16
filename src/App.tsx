@@ -11,7 +11,6 @@ import { Footer } from './Components/Footer'
 import { Header } from './Components/Header'
 import { NavBar } from './Components/NavBar'
 import { Team } from './Components/Team'
-import { Training } from './Components/Training'
 
 function App() {
 
@@ -21,7 +20,6 @@ function App() {
       <Header/>
       <AboutUs />
       <Campus/>
-      <Training/>
       <Team/>
       <CoFunders/> 
       <Contacts/>
