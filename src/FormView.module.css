@@ -28,6 +28,17 @@
     margin: 5%;
     padding-left: 5%;
 }
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .alerts{
     z-index: 6;
     width: 40%;
@@ -38,6 +49,7 @@
     /* color: #fff; */
     font-size: 20px;
     font-weight: bold;
+    animation: slideDown 0.8s ease-out;
 }
 .button {
   width:50%;
@@ -97,6 +109,11 @@
     .form{
         width: 90%;
         font-size: 20px;
-        margin-top: 15%;
+        margin-top: 5%;
     }
-}
+    .alerts{
+        padding: 5% 1%;
+        font-size: 16px;
+        width: 90%;
+    }
+    }
