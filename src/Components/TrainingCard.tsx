@@ -9,10 +9,10 @@ interface TrainingProps{
     onOpen:any;
 }
 export const TrainingCard : React.FC<TrainingProps> = ({title,text, active, onOpen }) => {
-   const handleScrollToContact = () => {
-    const section = document.getElementById('contacts');
-    section?.scrollIntoView({ behavior: 'smooth' });
-  };
+  //  const handleScrollToContact = () => {
+  //   const section = document.getElementById('contacts');
+  //   section?.scrollIntoView({ behavior: 'smooth' });
+  // };
   return (
     
     <div className={styles.Container} style={{display:active?'block':'none'}}>

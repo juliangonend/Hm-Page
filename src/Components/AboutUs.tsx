@@ -1,7 +1,10 @@
 import { Button, Col, Container, Row } from "react-bootstrap"
 import style from "./AboutUs.module.css";
 import './globalsStyles.css';
-export const AboutUs = ({onOpen}) => {
+interface OnOpenInterface{
+    onOpen:any
+}
+export const AboutUs : React.FC<OnOpenInterface>  = ({onOpen}) => {
    const handleScrollToContact = () => {
     const section = document.getElementById('contacts');
     section?.scrollIntoView({ behavior: 'smooth' });

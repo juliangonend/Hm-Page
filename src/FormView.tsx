@@ -6,13 +6,15 @@ import { FaTimes  } from 'react-icons/fa';
 import emailjs from '@emailjs/browser'
 import { useRef, useState } from 'react';
 import { Alert, Spinner } from 'react-bootstrap';
-export const FormView =({onClose})=>{
+interface OnCloseInterface{
+    onClose:any
+}
+export const FormView: React.FC<OnCloseInterface>  =({onClose})=>{
   const[showSpinner, setShowSpinner]= useState(false);
-    const [validated, setValidated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const[alertMessage,setAlertMessage]= useState(true)
   const form =  useRef<HTMLFormElement | null>(null)
-  const enviarCorreo = (e) => {
+  const enviarCorreo = (e:any) => {
     setShowSpinner(true)
     e.preventDefault();
      if (!form.current) return; 
