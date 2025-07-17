@@ -19,11 +19,13 @@ export const FormView: React.FC<OnCloseInterface>  =({onClose})=>{
     e.preventDefault();
      if (!form.current) return; 
     emailjs.sendForm('service_7uu73vr', 'template_f3fn78p', form.current, 'IL-G6_SY4KHMiCCqM')
-      .then((result) => {
+      .then((result ) => {
+         void result;
         setAlertMessage(true)
         setShowAlert(true)
         setShowSpinner(false)
-      }, (error) => {
+      }, (error ) => {
+         void error;
         setAlertMessage(false)
         setShowAlert(true)
         setShowSpinner(false)
