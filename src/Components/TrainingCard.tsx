@@ -5,9 +5,10 @@ import '././globalsStyles.css'
 interface TrainingProps{
     title: string;
     text:string;
-    active:boolean
+    active:boolean;
+    onOpen:any;
 }
-export const TrainingCard : React.FC<TrainingProps> = ({title,text, active }) => {
+export const TrainingCard : React.FC<TrainingProps> = ({title,text, active, onOpen }) => {
    const handleScrollToContact = () => {
     const section = document.getElementById('contacts');
     section?.scrollIntoView({ behavior: 'smooth' });
@@ -17,7 +18,7 @@ export const TrainingCard : React.FC<TrainingProps> = ({title,text, active }) =>
     <div className={styles.Container} style={{display:active?'block':'none'}}>
             <h2>{title}</h2>
             <p>{text}</p> 
-            <Button className='w-50' style={{backgroundColor:'var(--primary-color'}} onClick={handleScrollToContact}>Contactanos</Button>
+            <Button className={styles.button}  onClick={onOpen}>Contactanos</Button>
     </div>
 
   )

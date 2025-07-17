@@ -7,19 +7,15 @@ export const Header = () => {
     <Carousel  className={style.carrusel} >
       <Carousel.Item className="d-block w-100 h-100">
          <div  className={style.carruselImage}>
-         <img src="./header/header-1.jpg" alt="" />
-         </div>
-       <Carousel.Caption>
+         <img src="./header/header-1.webp" alt="" />
          <h3 className={style.title}>SE JUEGA COMO<br/> SE ENTRENA</h3>
-        </Carousel.Caption> 
+         </div> 
       </Carousel.Item>
       <Carousel.Item>
          <div className={style.carruselImage}>
-            <img src="./header/header-2.jpg" alt="" />
-         </div>
-      <Carousel.Caption>
+            <img src="./header/header-2.webp" alt="" />
          <h3  className={style.title}>SE JUEGA COMO<br/> SE ENTRENA</h3>
-        </Carousel.Caption> 
+         </div>
       </Carousel.Item>
       {/* <Carousel.Item>
       <div className={style.carruselImage}>

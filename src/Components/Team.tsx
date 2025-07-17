@@ -4,7 +4,7 @@ import style from './Team.module.css'
 import { useState } from 'react';
 import { TrainingCard } from './TrainingCard';
 import './globalsStyles.css'
-export const Team = () => {
+export const Team = ({onOpen}) => {
     const [cardActive, setCardActive] = useState([true,false,false,false]) 
   const changeActive = (id: number) => {
     const newCardActive = cardActive.map((_, index) => index === id);
@@ -15,7 +15,7 @@ export const Team = () => {
  <Container fluid className={`w-100 py-5 px-4  mt-4 `}>
         <Row className='w-100 m-0 h-100'>
             <Col md={6} className={`p-0 d-flex justify-content-center align-items-center ${style.imgContainer}`}  style={{height:'100%', overflow:'hidden'}}>
-            <img src="./header/img-7.jpg" alt="" className={`img-fluid ${style.img}`}  />
+            <img src="./campus2.webp" alt="" className={`img-fluid ${style.img}`}  />
           </Col>
             <Col md={6}  className={`${style.textContainer}`}  >
                 <div className={`${style.title}    `}>
@@ -36,14 +36,14 @@ export const Team = () => {
                       </div>
                     </div>
                    <div className={style.cardContainer}>
-                      <TrainingCard
+                      <TrainingCard onOpen={onOpen}
                       title="Asesoramiento" 
                       text="Brindamos las herramientas necesarias para tu club, federación o asociación.
                       Planificamos, organizamos y fortalecemos la institución, capacitando al personal 
                       para alcanzar los objetivos propuestos."
                       active={cardActive[0]}
                       />
-                      <TrainingCard 
+                      <TrainingCard onOpen={onOpen}
                       title="Giras Deportivas" 
                       text="Nos encargamos de organizar giras deportivas integrales para tu institución,
                       con partidos, actividades, comidas, alojamiento y más. Diseñadas para que solo se 

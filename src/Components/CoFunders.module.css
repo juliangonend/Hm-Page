@@ -7,6 +7,7 @@
   flex-wrap: wrap;
   gap: 3rem; /* gap-5 en Bootstrap ≈ 3rem */
 }
+
 @media only screen and  (max-width: 600px) {
     .conFundersContainer{
         display: block;

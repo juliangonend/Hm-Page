@@ -23,7 +23,7 @@ border-radius:0 0 0 5%  ;
   display: flex;
   flex-direction: column;
   justify-content: start;
-  padding: 3rem 1rem; /* equivale a Bootstrap p-5 */
+  padding: 3rem 2rem; /* equivale a Bootstrap p-5 */
   gap: 10%; /* equivale a Bootstrap gap-3 */
   background-color: var(--grey-color);
 }

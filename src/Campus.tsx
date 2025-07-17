@@ -3,7 +3,7 @@ import style from './Campus.module.css'
 import './Components/globalsStyles.css';
 import { TrainingCard } from './Components/TrainingCard';
 import { useState } from 'react';
-export const Campus = () => {
+export const Campus = ({onOpen}) => {
   const [cardActive, setCardActive] = useState([true,false,false,false]) 
 const changeActive = (id: number) => {
   const newCardActive = cardActive.map((_, index) => index === id);
@@ -35,7 +35,7 @@ const changeActive = (id: number) => {
                 </div>
 
                 <div className={style.cardContainer}>
-                     <TrainingCard 
+                     <TrainingCard  onOpen={onOpen}
                     title="Arqueros" 
                     text="Desarrollá todo tu potencial como arquero con entrenamientos 
                     técnicos, tácticos y coordinativos, guiados por un especialista. 
@@ -43,7 +43,7 @@ const changeActive = (id: number) => {
                     a llegar al nivel que buscás."
                     active={cardActive[0]}
                     />
-                     <TrainingCard 
+                     <TrainingCard  onOpen={onOpen}
                     title="Jugadores" 
                     text="Llevá tu juego al siguiente nivel con entrenamientos enfocados 
                     en cada aspecto individual: defensa, definición, habilidades aéreas, 
@@ -51,7 +51,7 @@ const changeActive = (id: number) => {
                     Para todos los niveles, desde los 11 años en adelante."
                     active={cardActive[1]}
                     />
-                     <TrainingCard 
+                     <TrainingCard  onOpen={onOpen}
                       title="Psicomotricidad" 
                       text="A través del juego y el movimiento, trabajamos la coordinación,
                        el equilibrio, la postura y el control corporal. Nuestros entrenamientos
@@ -70,7 +70,7 @@ const changeActive = (id: number) => {
                 </div>
              </Col>
           <Col md={6} className={`p-0 d-flex justify-content-center align-items-center ${style.imgContainer}`}  style={{height:'100%'}}>
-            <img src="./campus2.jpg" alt="" className={`img-fluid ${style.img}`}  />
+            <img src="./header/header-3.webp" alt="" className={`img-fluid ${style.img}`}  />
           </Col>
 
         </Row>
