@@ -3,7 +3,10 @@ import style from './Campus.module.css'
 import './Components/globalsStyles.css';
 import { TrainingCard } from './Components/TrainingCard';
 import { useState } from 'react';
-export const Campus = ({onOpen}) => {
+interface OnOpenInterface{
+    onOpen:any
+}
+export const Campus : React.FC<OnOpenInterface>  = ({onOpen}) => {
   const [cardActive, setCardActive] = useState([true,false,false,false]) 
 const changeActive = (id: number) => {
   const newCardActive = cardActive.map((_, index) => index === id);

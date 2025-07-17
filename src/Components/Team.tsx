@@ -4,7 +4,10 @@ import style from './Team.module.css'
 import { useState } from 'react';
 import { TrainingCard } from './TrainingCard';
 import './globalsStyles.css'
-export const Team = ({onOpen}) => {
+interface OnOpenInterface{
+    onOpen:any
+}
+export const Team : React.FC<OnOpenInterface>  = ({onOpen}) => {
     const [cardActive, setCardActive] = useState([true,false,false,false]) 
   const changeActive = (id: number) => {
     const newCardActive = cardActive.map((_, index) => index === id);
