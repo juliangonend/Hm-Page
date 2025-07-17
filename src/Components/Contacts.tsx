@@ -2,7 +2,10 @@ import { Button, Form } from 'react-bootstrap'
 import styles from './Contacts.module.css'
 
 import { FaInstagram, FaPhoneAlt, FaTiktok, FaWhatsapp } from 'react-icons/fa';
-export const Contacts = ({onOpen}) => {
+interface OnOpenInterface{
+    onOpen:any
+}
+export const Contacts : React.FC<OnOpenInterface> = ({onOpen}) => {
 
   return (
     <div className={`${styles.contactsContainer}`} id="contacts" >

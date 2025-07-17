@@ -5,10 +5,7 @@ interface OnOpenInterface{
     onOpen:any
 }
 export const AboutUs : React.FC<OnOpenInterface>  = ({onOpen}) => {
-   const handleScrollToContact = () => {
-    const section = document.getElementById('contacts');
-    section?.scrollIntoView({ behavior: 'smooth' });
-  };
+
   return (
     <>
     <Container fluid id="aboutUs" style={{margin:'2% 0',gap:'3vh', height:'50' }} className='d-flex flex-column  w-100 align-items-center'>

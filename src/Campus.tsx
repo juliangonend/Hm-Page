@@ -62,6 +62,7 @@ const changeActive = (id: number) => {
                     />
 
                      <TrainingCard 
+                     onOpen={onOpen}
                     title="Arrastradores"               
                     text="Entrenamientos especializados en arrastre, perfeccioná tu técnica para marcar 
                     la diferencia en cada partido."
