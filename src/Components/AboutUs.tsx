@@ -35,11 +35,11 @@ export const AboutUs : React.FC<OnOpenInterface>  = ({onOpen}) => {
                   {/* <p className={style.border}></p> */}
                 </Col>
                 <Col md={3} sm={6} className="mb-3">
-                  <span className="fs-1 d-block">500+</span>
+                  <span className="fs-1 d-block">2000+</span>
                   <p>Jugadores</p>
                 </Col>
                 <Col md={3} sm={6} className="mb-3">
-                  <span className="fs-1 d-block">6+</span>
+                  <span className="fs-1 d-block">10+</span>
                   <p>Giras deportivas realizadas</p>
                 </Col>
                 <Col md={3} sm={6} className="mb-3">

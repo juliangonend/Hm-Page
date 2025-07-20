@@ -9,7 +9,8 @@ export const CoFunders = () => {
          <div className={styles.conFundersContainer}>
             <Card name='Jose' lastName="Gonzalez"          
                img='./jose-sinfondo3.webp' 
-            text={['Primera división damas -UNCUYO','Head Coach Damas AMHSC','Director Regional CAH Centro-cuyo']}
+            text={['Head Coach Damas AMHSC','Director Regional CAH Centro-cuyo' ,'Medalla de plata Juegos Olímpicos de la Juventud Singapur 2010 con Argentina',
+               'Medalla de oro  Juegos Suramericanos de la Juventud 2022 sub 17 con Argentina ']}
             />
             <Card name='Cristian' lastName="Gonzalez" 
             img='./cristianfoto3.webp'
