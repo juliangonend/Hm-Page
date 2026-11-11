@@ -1,0 +1,221 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  background:
+    radial-gradient(ellipse at 50% 45%, rgba(47, 169, 227, 0.14), transparent 60%),
+    var(--color-navy-dark);
+  color: var(--color-muted-on-dark);
+  padding: calc(var(--nav-height) + 24px) 16px 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Full-screen tactical board behind everything */
+.boardWrap {
+  position: absolute;
+  inset: var(--nav-height) 0 0 0;
+  pointer-events: none;
+}
+
+.board {
+  width: 100%;
+  height: 100%;
+}
+
+.fieldGroup {
+  opacity: 0.18;
+}
+
+.center {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Logo: as big as the viewport allows while leaving room for tagline + CTAs */
+.logoWrap {
+  position: relative;
+  width: clamp(240px, min(calc(100svh - var(--nav-height) - 300px), 88vw), 640px);
+  aspect-ratio: 1080 / 1036;
+  margin: 0 0 28px;
+  font-weight: 400;
+}
+
+.sketch {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.logo {
+  position: absolute;
+  inset: 0;
+  display: block;
+  filter: drop-shadow(0 24px 60px rgba(0, 0, 0, 0.45));
+}
+
+/* Each tile shows its slice of the logo; the mask cuts the white corners of logos.png */
+.tile {
+  --step: calc(100% / (var(--grid) - 1));
+  position: absolute;
+  left: calc(100% / var(--grid) * var(--col));
+  top: calc(100% / var(--grid) * var(--row));
+  width: calc(100% / var(--grid) + 0.5px);
+  height: calc(100% / var(--grid) + 0.5px);
+  background-size: calc(var(--grid) * 100%) calc(var(--grid) * 100%);
+  background-position: calc(var(--step) * var(--col)) calc(var(--step) * var(--row));
+  background-repeat: no-repeat;
+  -webkit-mask-image: radial-gradient(ellipse 45% 46.9% at 49.9% 49.4%, #000 99.5%, transparent 100%);
+  mask-image: radial-gradient(ellipse 45% 46.9% at 49.9% 49.4%, #000 99.5%, transparent 100%);
+  -webkit-mask-size: calc(var(--grid) * 100%) calc(var(--grid) * 100%);
+  mask-size: calc(var(--grid) * 100%) calc(var(--grid) * 100%);
+  -webkit-mask-position: calc(var(--step) * var(--col)) calc(var(--step) * var(--row));
+  mask-position: calc(var(--step) * var(--col)) calc(var(--step) * var(--row));
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  will-change: transform, opacity;
+}
+
+.ball {
+  position: absolute;
+  left: 0;
+  bottom: 4%;
+  opacity: 0;
+  z-index: 2;
+  filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.35));
+}
+
+.tagline {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0 0.55em;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(18px, 3.2vw, 34px);
+  letter-spacing: 3px;
+  color: var(--color-white);
+  text-shadow:
+    0 2px 0 var(--color-dark-blue),
+    0 4px 14px rgba(0, 0, 0, 0.75),
+    0 0 28px rgba(11, 31, 58, 0.9);
+}
+
+.word {
+  display: inline-flex;
+}
+
+.letter {
+  display: inline-block;
+}
+
+.underline {
+  display: block;
+  width: min(360px, 70vw);
+  height: 5px;
+  margin: 18px 0 36px;
+  border-radius: 3px;
+  background: var(--color-accent);
+}
+
+.ctas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+}
+
+.scrollCue {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  width: 24px;
+  height: 38px;
+  margin-left: -12px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 12px;
+}
+
+.scrollCue::after {
+  content: '';
+  position: absolute;
+  top: 7px;
+  left: 50%;
+  width: 4px;
+  height: 8px;
+  margin-left: -2px;
+  border-radius: 2px;
+  background: var(--color-white);
+  animation: cue 1.6s ease-in-out infinite;
+}
+
+@keyframes cue {
+  0% { transform: translateY(0); opacity: 1; }
+  80% { transform: translateY(12px); opacity: 0; }
+  100% { opacity: 0; }
+}
+
+/* Portrait screens: turn the field 90° so the whole pitch fills the screen vertically */
+@media (orientation: portrait) {
+  .board {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: calc(100svh - var(--nav-height));
+    height: 100vw;
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+}
+
+@media (max-width: 575px) {
+  .hero {
+    padding-bottom: 40px;
+  }
+  .logoWrap {
+    margin-bottom: 20px;
+  }
+  .tagline {
+    letter-spacing: 1.5px;
+    gap: 0 0.4em;
+  }
+  .underline {
+    margin: 14px 0 28px;
+  }
+  .ctas {
+    width: 100%;
+  }
+  .ctas > * {
+    flex: 1 1 100%;
+  }
+  .scrollCue {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scrollCue::after {
+    animation: none;
+  }
+}

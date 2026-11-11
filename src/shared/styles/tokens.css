@@ -1,0 +1,54 @@
+:root {
+  --color-navy-dark: #0b1f3a;
+  --color-dark-blue: #032b7c;
+  --color-primary: #0f70b7;
+  --color-accent: #2fa9e3;
+  --color-panel: #123a6b;
+  --color-bg-light: #f2f6fa;
+  --color-border: #dce8f3;
+  --color-text: #4a5a70;
+  --color-muted-on-dark: #c9d8ec;
+  --color-chip-bg: #eaf5fc;
+  --color-white: #ffffff;
+
+  --color-error-border: #d93025;
+  --color-error-bg: #fff5f5;
+  --color-error-text: #b3261e;
+  --color-success-bg: #e8f5ec;
+  --color-success-text: #1e8e3e;
+
+  --font-body: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Seymour One', 'Poppins', sans-serif;
+
+  --radius-button: 28px;
+  --radius-card: 24px;
+  --radius-input: 12px;
+  --radius-media: 32px;
+
+  --shadow-button: 0 4px 0 var(--color-dark-blue);
+  --shadow-button-hover: 0 6px 0 var(--color-dark-blue);
+  --shadow-card: 0 12px 32px rgba(11, 31, 58, 0.08);
+
+  --section-pad-y: 120px;
+  --section-pad-x: 120px;
+  --nav-height: 76px;
+  --container-max: 1280px;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-hover: 200ms;
+}
+
+@media (max-width: 1199px) {
+  :root {
+    --section-pad-y: 96px;
+    --section-pad-x: 48px;
+  }
+}
+
+@media (max-width: 767px) {
+  :root {
+    --section-pad-y: 72px;
+    --section-pad-x: 16px;
+    --nav-height: 64px;
+  }
+}

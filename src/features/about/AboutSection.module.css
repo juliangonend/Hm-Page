@@ -1,0 +1,107 @@
+.section {
+  background: var(--color-white);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+/* Blue "pitch" card; the very wide cut-out (player lunging low, 3:1) plays on its white line
+   and breaks out of the card on the right with the stick and ball */
+.media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-media);
+  background:
+    radial-gradient(circle at 70% 15%, rgba(47, 169, 227, 0.9), transparent 60%),
+    linear-gradient(180deg, var(--color-primary) 0%, #0a4f8f 100%);
+  overflow: visible;
+}
+
+/* Pitch line the player stands on */
+.media::after {
+  content: '';
+  position: absolute;
+  left: 6%;
+  right: 6%;
+  bottom: 22%;
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.image {
+  position: absolute;
+  z-index: 1;
+  bottom: 19%; /* feet just on the pitch line */
+  left: -8%;
+  width: 128%; /* stick and ball stick out ~20% on the right: into the gap, not over the text */
+  max-width: none;
+  height: auto;
+  /* Thin white outline following the cut-out (4 hard 1.5px shadows), soft white glow, then depth */
+  filter:
+    drop-shadow(1.5px 0 0 #fff)
+    drop-shadow(-1.5px 0 0 #fff)
+    drop-shadow(0 1.5px 0 #fff)
+    drop-shadow(0 -1.5px 0 #fff)
+    drop-shadow(0 0 6px rgba(255, 255, 255, 0.45))
+    drop-shadow(0 22px 28px rgba(3, 43, 124, 0.4));
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.text {
+  margin: 24px 0 28px;
+  font-size: 17px;
+  max-width: 560px;
+}
+
+.pills {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 36px;
+  padding: 0;
+}
+
+.pill {
+  padding: 8px 18px;
+  border-radius: var(--radius-button);
+  background: var(--color-chip-bg);
+  color: var(--color-dark-blue);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+@media (max-width: 991px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  .media {
+    max-width: 480px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  /* On narrow screens keep the player inside the viewport */
+  .image {
+    left: 0;
+    width: 112%;
+  }
+}
+
+@media (max-width: 575px) {
+  .media {
+    width: 82%;
+    margin-left: 4%;
+    margin-right: auto;
+  }
+}
