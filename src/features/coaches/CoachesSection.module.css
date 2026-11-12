@@ -1,0 +1,129 @@
+.section {
+  background: var(--color-white);
+}
+
+.header {
+  margin-bottom: 56px;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+
+.card {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  min-height: 380px;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  transition:
+    transform var(--duration-hover) ease,
+    box-shadow var(--duration-hover) ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 48px rgba(11, 31, 58, 0.14);
+}
+
+.info {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.tag {
+  padding: 6px 12px;
+  border-radius: var(--radius-button);
+  background: var(--color-chip-bg);
+  color: var(--color-primary);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.name {
+  margin: 16px 0 20px;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(26px, 2.6vw, 34px);
+  line-height: 1.1;
+}
+
+.first {
+  color: var(--color-primary);
+}
+
+.last {
+  color: var(--color-dark-blue);
+}
+
+.achievements {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 14px;
+}
+
+.achievements li {
+  position: relative;
+  padding-left: 18px;
+}
+
+.achievements li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+
+.photoWrap {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--color-chip-bg), var(--color-bg-light));
+  display: flex;
+  align-items: flex-end;
+}
+
+.photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transform-origin: bottom center;
+}
+
+@media (max-width: 1199px) {
+  .list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 575px) {
+  .card {
+    grid-template-columns: 1fr;
+  }
+  .photoWrap {
+    order: -1;
+    height: 320px;
+  }
+  .info {
+    padding: 24px;
+  }
+}

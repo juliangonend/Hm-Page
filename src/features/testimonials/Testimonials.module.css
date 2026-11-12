@@ -1,0 +1,167 @@
+.section {
+  background: var(--color-bg-light);
+}
+
+.header {
+  margin-bottom: 40px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* One large video at a time: arrows on the sides, swipeable track in the middle */
+.slider {
+  display: grid;
+  grid-template-columns: auto minmax(0, 480px) auto;
+  justify-content: center;
+  align-items: center;
+  gap: 28px;
+}
+
+.track {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+.track::-webkit-scrollbar {
+  display: none;
+}
+
+.slide {
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.frame {
+  position: relative;
+  width: 100%;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-card);
+}
+
+/* Instagram's embed adds its own header and footer around the video */
+.instagram {
+  height: min(860px, 82vh);
+  min-height: 620px;
+}
+
+.youtube {
+  aspect-ratio: 9 / 16;
+  max-height: 82vh;
+  margin: 0 auto;
+  background: var(--color-navy-dark);
+}
+
+.video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.caption {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.author {
+  font-weight: 700;
+  color: var(--color-dark-blue);
+}
+
+.club {
+  font-size: 14px;
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+.arrow {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 0;
+  background: var(--color-primary);
+  color: var(--color-white);
+  font-size: 30px;
+  line-height: 1;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  box-shadow: var(--shadow-card);
+  transition:
+    transform var(--duration-hover) ease,
+    background-color var(--duration-hover) ease,
+    opacity var(--duration-hover) ease;
+}
+
+.arrow:hover:not(:disabled) {
+  background: var(--color-dark-blue);
+  transform: scale(1.06);
+}
+
+.arrow:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.arrow:focus-visible,
+.dot:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+.dots {
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: var(--color-border);
+  cursor: pointer;
+  transition:
+    width var(--duration-hover) ease,
+    background-color var(--duration-hover) ease;
+}
+
+.dot[aria-current='true'] {
+  width: 28px;
+  background: var(--color-primary);
+}
+
+/* On phones the video takes the full width; swipe or use the dots */
+@media (max-width: 767px) {
+  .slider {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .arrow {
+    display: none;
+  }
+  .instagram {
+    height: min(760px, 78vh);
+    min-height: 560px;
+  }
+}

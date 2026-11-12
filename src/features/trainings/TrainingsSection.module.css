@@ -1,0 +1,148 @@
+.section {
+  background: var(--color-bg-light);
+  overflow: hidden;
+}
+
+.header {
+  max-width: 760px;
+  margin-bottom: 64px;
+}
+
+.lead {
+  margin-top: 20px;
+  font-size: 17px;
+}
+
+.grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.shell {
+  display: flex;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition:
+    transform var(--duration-hover) ease,
+    box-shadow var(--duration-hover) ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(11, 31, 58, 0.14);
+}
+
+.media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background: var(--color-panel);
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  padding: 6px 12px;
+  border-radius: var(--radius-button);
+  background: var(--color-white);
+  color: var(--color-dark-blue);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 24px;
+  flex: 1;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--color-navy-dark);
+}
+
+.text {
+  font-size: 15px;
+  flex: 1;
+}
+
+.cta {
+  align-self: flex-start;
+  margin-top: 8px;
+  padding: 0;
+  background: none;
+  border: 0;
+  color: var(--color-primary);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.cta span {
+  display: inline-block;
+  transition: transform var(--duration-hover) ease;
+}
+
+.cta:hover span {
+  transform: translateX(4px);
+}
+
+.track {
+  position: relative;
+  height: 64px;
+  margin-top: 32px;
+}
+
+.trail {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 14px;
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(47, 169, 227, 0.8);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.ball {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  opacity: 0;
+}
+
+@media (max-width: 1199px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 575px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

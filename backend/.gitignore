@@ -1,0 +1,7 @@
+/vendor/
+/config.php
+/uploads/
+.phpunit.cache/
+/local.sqlite
+/public/uploads/
+.phpunit.result.cache

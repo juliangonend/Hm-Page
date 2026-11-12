@@ -1,0 +1,194 @@
+.section {
+  background: var(--color-white);
+}
+
+.header {
+  max-width: 720px;
+  margin-bottom: 56px;
+}
+
+.grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 28px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition:
+    transform var(--duration-hover) ease,
+    box-shadow var(--duration-hover) ease;
+}
+
+.card:not(.skeleton):hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(11, 31, 58, 0.14);
+}
+
+.media {
+  position: relative;
+  height: 168px;
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.toneCampus {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-dark-blue));
+}
+.toneGira {
+  background: linear-gradient(135deg, var(--color-panel), var(--color-navy-dark));
+}
+.toneEntrenamiento {
+  background: linear-gradient(135deg, var(--color-accent), var(--color-primary));
+}
+.toneNovedad {
+  background: linear-gradient(135deg, var(--color-dark-blue), var(--color-panel));
+}
+
+.badge {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  padding: 6px 14px;
+  border-radius: var(--radius-button);
+  background: var(--color-white);
+  color: var(--color-dark-blue);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Venue "sign" pinned on the photo */
+.venue {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  max-width: calc(100% - 32px);
+  padding: 6px 12px;
+  border-radius: var(--radius-button);
+  background: var(--color-dark-blue);
+  color: var(--color-white);
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 24px;
+  flex: 1;
+}
+
+.date {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.title {
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--color-navy-dark);
+}
+
+.subtitle {
+  margin: -4px 0 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+/* Teaser on the card: the full text lives in "+ info" */
+.description {
+  font-size: 15px;
+  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.price {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--color-navy-dark);
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.spots {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-dark-blue);
+  background: var(--color-chip-bg);
+  padding: 6px 12px;
+  border-radius: var(--radius-button);
+}
+
+.line {
+  height: 14px;
+  border-radius: 8px;
+}
+
+.shimmer {
+  background: linear-gradient(90deg, #e9eff6 25%, #f6f9fc 50%, #e9eff6 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s linear infinite;
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}
+
+.empty {
+  text-align: center;
+  padding: 56px 24px;
+  border-radius: var(--radius-card);
+  background: var(--color-bg-light);
+  border: 1px dashed var(--color-border);
+}
+
+.emptyTitle {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--color-navy-dark);
+  margin-bottom: 6px;
+}

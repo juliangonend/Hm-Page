@@ -1,0 +1,15 @@
+# Hostinger: this folder is uploaded as public_html/api/
+# Every request goes through public/index.php, so src/, config.php, database/ and bin/
+# can never be downloaded or executed directly.
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{ENV:REDIRECT_STATUS} ^$
+  RewriteRule ^ public/index.php [L,QSA]
+</IfModule>
+
+# Fallback if mod_rewrite were ever disabled: deny the sensitive files anyway
+<FilesMatch "^(config(\.example)?\.php|bootstrap\.php|composer\.(json|lock)|phpunit\.xml|.*\.sql|.*\.md)$">
+  Require all denied
+</FilesMatch>
