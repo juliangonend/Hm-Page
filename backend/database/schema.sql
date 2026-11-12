@@ -13,6 +13,7 @@ CREATE TABLE IF NOT EXISTS events (
   title        VARCHAR(150)  NOT NULL,
   subtitle     VARCHAR(200)  NULL,
   venue        VARCHAR(150)  NULL,
+  country      CHAR(2)       NOT NULL DEFAULT 'AR',
   description  TEXT          NOT NULL,
   event_date   DATETIME      NOT NULL,
   link         VARCHAR(500)  NULL,

@@ -15,6 +15,8 @@ final class EventData
         public readonly ?string $subtitle,
         /** Where it happens, e.g. "Club Alemán, Mendoza" */
         public readonly ?string $venue,
+        /** ISO 3166-1 alpha-2 code of the country it happens in: "AR", "CL" or "ES". */
+        public readonly string $country,
         public readonly string $description,
         public readonly DateTimeImmutable $date,
         public readonly ?string $link,

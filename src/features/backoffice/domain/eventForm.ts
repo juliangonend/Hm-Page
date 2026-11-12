@@ -1,4 +1,5 @@
 import type { AdminEvent, EventPayload } from './AdminEvent'
+import { DEFAULT_COUNTRY, toCountryCode } from '../../../shared/domain/countries'
 
 export type EventFormValues = EventPayload
 
@@ -8,6 +9,7 @@ export const EMPTY_FORM: EventFormValues = {
   title: '',
   subtitle: '',
   venue: '',
+  country: DEFAULT_COUNTRY,
   description: '',
   date: '',
   link: '',
@@ -25,6 +27,7 @@ export const toFormValues = (event: AdminEvent): EventFormValues => ({
   title: event.title,
   subtitle: event.subtitle ?? '',
   venue: event.venue ?? '',
+  country: toCountryCode(event.country),
   description: event.description,
   date: event.date.slice(0, 16),
   link: event.link ?? '',
@@ -37,6 +40,7 @@ export const toPayload = (values: EventFormValues): EventPayload => ({
   title: values.title.trim(),
   subtitle: values.subtitle.trim(),
   venue: values.venue.trim(),
+  country: values.country,
   description: values.description.trim(),
   date: values.date,
   link: values.link.trim(),

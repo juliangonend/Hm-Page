@@ -40,6 +40,20 @@
   text-transform: uppercase;
 }
 
+.flags {
+  display: inline-flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.flag {
+  transition: scale 0.2s ease;
+}
+
+.flag:hover {
+  scale: 1.15;
+}
+
 .detail {
   font-size: 13px;
   color: rgba(255, 255, 255, 0.85);

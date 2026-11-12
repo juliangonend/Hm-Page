@@ -1,12 +1,14 @@
 import { useRef } from 'react'
 import { useGsap } from '../../shared/motion'
+import { CountryFlag } from '../../shared/ui/CountryFlag'
+import { COUNTRIES } from '../../shared/domain/countries'
 import styles from './StatsBand.module.css'
 
 const STATS = [
-  { value: 3, suffix: '', label: 'Sedes', detail: 'Argentina, Chile y España' },
-  { value: 2000, suffix: '+', label: 'Jugadores' },
+  { value: 3, suffix: '', label: 'Sedes', detail: '', flags: true },
+  { value: 4000, suffix: '+', label: 'Jugadores' },
   { value: 10, suffix: '+', label: 'Giras deportivas' },
-  { value: 13, suffix: '+', label: 'Años de trayectoria' },
+  { value: 15, suffix: '+', label: 'Años de trayectoria' },
 ]
 
 export const StatsBand = () => {
@@ -48,6 +50,13 @@ export const StatsBand = () => {
             </span>
             <span className={styles.label}>{stat.label}</span>
             {stat.detail && <span className={styles.detail}>{stat.detail}</span>}
+            {stat.flags && (
+              <span className={styles.flags}>
+                {COUNTRIES.map(({ code }) => (
+                  <CountryFlag key={code} code={code} size={34} className={styles.flag} />
+                ))}
+              </span>
+            )}
           </li>
         ))}
       </ul>

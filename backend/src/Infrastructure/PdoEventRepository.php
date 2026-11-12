@@ -15,7 +15,7 @@ use PDO;
 final class PdoEventRepository implements EventRepository
 {
     private const DB_DATE = 'Y-m-d H:i:s';
-    private const COLUMNS = 'id, title, subtitle, venue, description, event_date, link, price, currency, image_path, is_published';
+    private const COLUMNS = 'id, title, subtitle, venue, country, description, event_date, link, price, currency, image_path, is_published';
 
     public function __construct(
         private readonly PDO $pdo,
@@ -52,8 +52,8 @@ final class PdoEventRepository implements EventRepository
     public function create(EventData $data, DateTimeImmutable $now): Event
     {
         $stmt = $this->pdo->prepare(
-            'INSERT INTO events (title, subtitle, venue, description, event_date, link, price, currency, is_published, created_at, updated_at)
-             VALUES (:title, :subtitle, :venue, :description, :event_date, :link, :price, :currency, :published, :now, :now2)'
+            'INSERT INTO events (title, subtitle, venue, country, description, event_date, link, price, currency, is_published, created_at, updated_at)
+             VALUES (:title, :subtitle, :venue, :country, :description, :event_date, :link, :price, :currency, :published, :now, :now2)'
         );
         $stmt->execute($this->params($data) + ['now' => $this->dbDate($now), 'now2' => $this->dbDate($now)]);
 
@@ -66,7 +66,7 @@ final class PdoEventRepository implements EventRepository
             return null;
         }
         $stmt = $this->pdo->prepare(
-            'UPDATE events SET title = :title, subtitle = :subtitle, venue = :venue, description = :description, event_date = :event_date, link = :link,
+            'UPDATE events SET title = :title, subtitle = :subtitle, venue = :venue, country = :country, description = :description, event_date = :event_date, link = :link,
              price = :price, currency = :currency, is_published = :published, updated_at = :now WHERE id = :id'
         );
         $stmt->execute($this->params($data) + ['now' => $this->dbDate($now), 'id' => $id]);
@@ -95,6 +95,7 @@ final class PdoEventRepository implements EventRepository
             'title' => $data->title,
             'subtitle' => $data->subtitle,
             'venue' => $data->venue,
+            'country' => $data->country,
             'description' => $data->description,
             'event_date' => $this->dbDate($data->date),
             'link' => $data->link,
@@ -117,6 +118,7 @@ final class PdoEventRepository implements EventRepository
             title: (string) $row['title'],
             subtitle: $row['subtitle'] === null ? null : (string) $row['subtitle'],
             venue: $row['venue'] === null ? null : (string) $row['venue'],
+            country: (string) $row['country'],
             description: (string) $row['description'],
             date: new DateTimeImmutable((string) $row['event_date'], $this->timezone),
             link: $row['link'] === null ? null : (string) $row['link'],

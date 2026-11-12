@@ -10,6 +10,7 @@ const EVENT: AdminEvent = {
   title: 'Campus de verano',
   subtitle: 'Arqueros y jugadores',
   venue: 'Club Alemán, Mendoza',
+  country: 'AR',
   description: 'Tres días de entrenamiento',
   date: '2027-02-10T09:00:00-03:00',
   link: 'https://example.com',
@@ -71,6 +72,7 @@ describe('AdminApp', () => {
     await user.type(within(form).getByLabelText(/Título/), 'Clínica de arqueros')
     await user.type(within(form).getByLabelText(/Subtítulo/), 'Todas las edades')
     await user.type(within(form).getByLabelText(/Sede/), 'Club STM, San Juan')
+    await user.selectOptions(within(form).getByLabelText(/País/), 'Chile')
     await user.type(within(form).getByLabelText(/Descripción/), 'Para todas las edades')
     await user.type(within(form).getByLabelText(/Fecha y hora/), '2027-03-01T18:00')
     await user.type(within(form).getByLabelText(/Valor/), '15000')
@@ -84,6 +86,7 @@ describe('AdminApp', () => {
         title: 'Clínica de arqueros',
         subtitle: 'Todas las edades',
         venue: 'Club STM, San Juan',
+        country: 'CL',
         date: '2027-03-01T18:00', price: '15000', published: true,
       }),
     )

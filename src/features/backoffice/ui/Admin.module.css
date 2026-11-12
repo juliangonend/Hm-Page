@@ -235,7 +235,7 @@
 /* ---------- Form ---------- */
 .formGrid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 280px;
+  grid-template-columns: minmax(0, 1fr) 420px;
   gap: 32px;
 }
 
@@ -326,7 +326,9 @@
 }
 
 .preview {
-  aspect-ratio: 16 / 10;
+  width: 100%;
+  padding: 0;
+  aspect-ratio: 4 / 5;
   border-radius: 12px;
   border: 1px dashed var(--color-border);
   background: var(--color-bg-light);
@@ -340,7 +342,62 @@
 .preview img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+}
+
+.previewZoom {
+  border-style: solid;
+  background: #1a1a1a;
+  cursor: zoom-in;
+  transition: box-shadow 0.2s ease;
+}
+
+.previewZoom:hover,
+.previewZoom:focus-visible {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.photoActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.85);
+}
+
+.lightboxPanel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.lightboxPanel img {
+  max-width: min(1200px, 100%);
+  max-height: calc(100vh - 110px);
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.lightboxClose {
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: none;
+  color: var(--color-white);
+}
+
+.lightboxClose:hover {
+  background: rgba(255, 255, 255, 0.12);
 }
 
 .actions {
@@ -513,4 +570,10 @@
   .user .muted {
     display: none;
   }
+}
+
+.itemCountry {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }

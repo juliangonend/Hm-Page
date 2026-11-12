@@ -1,4 +1,6 @@
 import type { AdminEvent } from '../domain/AdminEvent'
+import { CountryFlag } from '../../../shared/ui/CountryFlag'
+import { findCountry } from '../../../shared/domain/countries'
 import styles from './Admin.module.css'
 
 interface EventsListProps {
@@ -62,7 +64,10 @@ export const EventsList = ({ events, onEdit, onDelete }: EventsListProps) => {
               <p className={styles.itemText}>{event.description}</p>
               <p className={styles.itemMeta}>
                 <span>Valor: {formatPrice(event)}</span>
-                {event.venue ? <span>Sede: {event.venue}</span> : null}
+                <span className={styles.itemCountry}>
+                  <CountryFlag code={event.country} size={16} /> {findCountry(event.country)?.label}
+                  {event.venue ? ` · ${event.venue}` : null}
+                </span>
                 {event.link ? (
                   <a href={event.link} target="_blank" rel="noreferrer">
                     Ver link ↗

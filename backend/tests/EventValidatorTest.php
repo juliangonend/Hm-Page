@@ -24,6 +24,7 @@ final class EventValidatorTest extends TestCase
             'title' => '  Campus de verano  ',
             'subtitle' => '  Arqueros y jugadores  ',
             'venue' => ' Club Alemán, Mendoza ',
+            'country' => ' cl ',
             'description' => 'Tres días de entrenamiento.',
             'date' => '2027-01-15T09:30',
             'link' => 'https://example.com/inscripcion',
@@ -35,6 +36,7 @@ final class EventValidatorTest extends TestCase
         self::assertSame('Campus de verano', $data->title);
         self::assertSame('Arqueros y jugadores', $data->subtitle);
         self::assertSame('Club Alemán, Mendoza', $data->venue);
+        self::assertSame('CL', $data->country);
         self::assertSame('Tres días de entrenamiento.', $data->description);
         self::assertSame('2027-01-15 09:30:00', $data->date->format('Y-m-d H:i:s'));
         self::assertSame('https://example.com/inscripcion', $data->link);
@@ -55,6 +57,7 @@ final class EventValidatorTest extends TestCase
 
         self::assertNull($data->subtitle);
         self::assertNull($data->venue);
+        self::assertSame('AR', $data->country);
         self::assertNull($data->link);
         self::assertNull($data->price);
         self::assertSame('ARS', $data->currency);
@@ -70,6 +73,7 @@ final class EventValidatorTest extends TestCase
         yield 'title too long' => [['title' => str_repeat('a', 151)] + $valid, 'title'];
         yield 'subtitle too long' => [['subtitle' => str_repeat('a', 201)] + $valid, 'subtitle'];
         yield 'venue too long' => [['venue' => str_repeat('a', 151)] + $valid, 'venue'];
+        yield 'unknown country' => [['country' => 'BR'] + $valid, 'country'];
         yield 'missing description' => [['description' => ''] + $valid, 'description'];
         yield 'bad date' => [['date' => '15/01/2027'] + $valid, 'date'];
         yield 'impossible date' => [['date' => '2027-02-31T10:00'] + $valid, 'date'];

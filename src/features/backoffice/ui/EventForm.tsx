@@ -1,7 +1,9 @@
-import { useEffect, useId, useState, type FormEvent, type ReactNode } from 'react'
+import { useCallback, useEffect, useId, useState, type FormEvent, type ReactNode } from 'react'
 import type { AdminEvent } from '../domain/AdminEvent'
 import { CURRENCIES, EMPTY_FORM, toFormValues, type EventFormValues } from '../domain/eventForm'
 import { ApiError } from '../infrastructure/adminApi'
+import { PhotoLightbox } from './PhotoLightbox'
+import { COUNTRIES, toCountryCode } from '../../../shared/domain/countries'
 import styles from './Admin.module.css'
 
 export interface PhotoChange {
@@ -71,6 +73,8 @@ export const EventForm = ({ event, onSubmit, onCancel }: EventFormProps) => {
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [formError, setFormError] = useState<string | null>(null)
   const [busy, setBusy] = useState(false)
+  const [showFullPhoto, setShowFullPhoto] = useState(false)
+  const closeFullPhoto = useCallback(() => setShowFullPhoto(false), [])
   const preview = usePreview(photo)
   const currentImage = preview ?? (removePhoto ? null : event?.imageUrl ?? null)
   const title = event ? 'Editar evento' : 'Nuevo evento'
@@ -118,6 +122,18 @@ export const EventForm = ({ event, onSubmit, onCancel }: EventFormProps) => {
           <Field label="Sede (opcional)" error={errors.venue} hint="Se muestra como cartel sobre la foto, ej.: Club Alemán, Mendoza">
             {(props) => (
               <input {...props} className={styles.input} value={values.venue} maxLength={150} onChange={(e) => set('venue', e.target.value)} />
+            )}
+          </Field>
+
+          <Field label="País *" error={errors.country} hint="Define la bandera de la tarjeta y a qué WhatsApp llegan las consultas">
+            {(props) => (
+              <select {...props} className={styles.input} value={values.country} onChange={(e) => set('country', toCountryCode(e.target.value))}>
+                {COUNTRIES.map(({ code, label }) => (
+                  <option key={code} value={code}>
+                    {label}
+                  </option>
+                ))}
+              </select>
             )}
           </Field>
 
@@ -199,14 +215,33 @@ export const EventForm = ({ event, onSubmit, onCancel }: EventFormProps) => {
               />
             )}
           </Field>
-          <div className={styles.preview}>
-            {currentImage ? <img src={currentImage} alt="Vista previa de la foto del evento" /> : <span>Sin foto</span>}
-          </div>
-          {event?.imageUrl && !photo && !removePhoto ? (
-            <button type="button" className={styles.ghost} onClick={() => setRemovePhoto(true)}>
-              Quitar foto
+          {currentImage ? (
+            <button
+              type="button"
+              className={`${styles.preview} ${styles.previewZoom}`}
+              aria-label="Ampliar foto"
+              onClick={() => setShowFullPhoto(true)}
+            >
+              <img src={currentImage} alt="" />
             </button>
-          ) : null}
+          ) : (
+            <div className={styles.preview}>
+              <span>Sin foto</span>
+            </div>
+          )}
+          <div className={styles.photoActions}>
+            {currentImage ? (
+              <button type="button" className={styles.ghost} onClick={() => setShowFullPhoto(true)}>
+                Ver foto completa
+              </button>
+            ) : null}
+            {event?.imageUrl && !photo && !removePhoto ? (
+              <button type="button" className={styles.ghost} onClick={() => setRemovePhoto(true)}>
+                Quitar foto
+              </button>
+            ) : null}
+          </div>
+          {showFullPhoto && currentImage ? <PhotoLightbox src={currentImage} onClose={closeFullPhoto} /> : null}
         </div>
       </div>
 

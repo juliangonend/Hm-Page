@@ -14,6 +14,8 @@ final class EventValidator
 {
     private const DATE_FORMATS = ['Y-m-d\TH:i', 'Y-m-d\TH:i:s', 'Y-m-d H:i', 'Y-m-d H:i:s'];
     private const MAX_PRICE = 99_999_999.99;
+    /** Countries with a Hockey Management WhatsApp line. */
+    public const COUNTRIES = ['AR', 'CL', 'ES'];
 
     public function __construct(private readonly DateTimeZone $timezone)
     {
@@ -37,6 +39,11 @@ final class EventValidator
         $venue = $this->text($input['venue'] ?? null);
         if (mb_strlen($venue) > 150) {
             $errors['venue'] = 'La sede puede tener hasta 150 caracteres.';
+        }
+
+        $country = strtoupper($this->text($input['country'] ?? null) ?: 'AR');
+        if (!in_array($country, self::COUNTRIES, true)) {
+            $errors['country'] = 'Elegí un país: Argentina, Chile o España.';
         }
 
         $description = $this->text($input['description'] ?? null);
@@ -78,6 +85,7 @@ final class EventValidator
             title: $title,
             subtitle: $subtitle === '' ? null : $subtitle,
             venue: $venue === '' ? null : $venue,
+            country: $country,
             description: $description,
             date: $date,
             link: $link === '' ? null : $link,

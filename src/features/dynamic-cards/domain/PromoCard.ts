@@ -1,3 +1,5 @@
+import type { CountryCode } from '../../../shared/domain/countries'
+
 export const PROMO_CARD_CATEGORIES = ['campus', 'gira', 'entrenamiento', 'novedad'] as const
 
 export type PromoCardCategory = (typeof PROMO_CARD_CATEGORIES)[number]
@@ -10,6 +12,8 @@ export interface PromoCard {
   subtitle?: string
   /** Venue, shown as a sign on the card photo */
   venue?: string
+  /** Country it happens in: drives the flag and the WhatsApp line for questions */
+  country?: CountryCode
   /** Full text, shown in the "+ info" detail (line breaks preserved) */
   description: string
   imageUrl?: string

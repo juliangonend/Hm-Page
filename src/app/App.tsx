@@ -22,9 +22,9 @@ export const App = () => (
       <Hero />
       <StatsBand />
       <AboutSection />
-      <TrainingsSection />
       {/* "Próximos eventos" only exists where the PHP back office is deployed (Hostinger build) */}
       {hasApi() && <UpcomingEventsSection />}
+      <TrainingsSection />
       <ClubsSection />
       <TrustedClubsWallSection />
       <TestimonialsSection />

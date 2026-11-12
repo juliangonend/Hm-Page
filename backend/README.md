@@ -43,7 +43,7 @@ composer serve                      # http://localhost:8000/api/events
 ## Deploy to Hostinger
 
 1. **Create the database.** In hPanel, go to Databases → Management and create a database and user. Save the name, user and password.
-2. **Create the tables.** Open phpMyAdmin, select the database, go to the SQL tab, and paste and run `database/schema.sql`.
+2. **Create the tables.** Open phpMyAdmin, select the database, go to the SQL tab, and paste and run `database/schema.sql`. If the database already existed, run instead the files in `database/migrations/` that it has not had yet, in order (for example `002_add_country.sql` adds the event country; existing events become Argentina).
 3. **Upload the code.** Upload the `backend/` folder as `public_html/api/`. Leave out `tests/`, `vendor/`, `local.sqlite` and `phpunit.xml`.
 4. **Configure.** Copy `config.example.php` to `config.php` inside `public_html/api/` and fill in the database values. Keep `cookie_secure => true`, `debug => false` and `uploads_dir => __DIR__ . '/../uploads/events'`.
 5. **Create the user.** Over SSH, run `cd public_html/api && php bin/create-admin.php <username>`. It asks for the password, which must be at least 12 characters. Running it again replaces the user, which is also how you change the password.

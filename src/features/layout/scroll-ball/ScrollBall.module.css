@@ -67,9 +67,28 @@
   filter: drop-shadow(0 4px 12px rgba(47, 169, 227, 0.8));
 }
 
-/* Touch devices and small screens: no rail */
+/*
+ * Touch devices and small screens: a slimmer rail hugging the edge.
+ * Display only (no taps), so it never steals touches from content underneath.
+ */
 @media (max-width: 767px), (pointer: coarse) {
   .rail {
-    display: none;
+    top: calc(var(--nav-height) + 16px);
+    bottom: 16px;
+    right: 2px;
+    width: 26px;
+  }
+
+  .visible {
+    pointer-events: none;
+  }
+
+  .ball {
+    left: 1px; /* (26px rail - 24px ball) / 2 */
+  }
+
+  .ball svg {
+    width: 24px;
+    height: auto; /* keeps the ball's 1:1.12 ratio */
   }
 }

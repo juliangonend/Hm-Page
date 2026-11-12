@@ -7,6 +7,7 @@ const EVENT: AdminEvent = {
   title: 'Campus de verano',
   subtitle: 'Arqueros y jugadores',
   venue: 'Club Alemán, Mendoza',
+  country: 'CL',
   description: 'Tres días',
   date: '2027-02-10T09:00:00-03:00',
   link: 'https://example.com',
@@ -17,11 +18,12 @@ const EVENT: AdminEvent = {
 }
 
 describe('eventForm', () => {
-  it('starts empty, published and in ARS', () => {
+  it('starts empty, published, in Argentina and in ARS', () => {
     expect(EMPTY_FORM).toEqual({
       title: '',
       subtitle: '',
       venue: '',
+      country: 'AR',
       description: '',
       date: '',
       link: '',
@@ -36,6 +38,7 @@ describe('eventForm', () => {
       title: 'Campus de verano',
       subtitle: 'Arqueros y jugadores',
       venue: 'Club Alemán, Mendoza',
+      country: 'CL',
       description: 'Tres días',
       date: '2027-02-10T09:00',
       link: 'https://example.com',
@@ -61,6 +64,7 @@ describe('eventForm', () => {
       title: 'Campus',
       subtitle: 'Arqueros y jugadores',
       venue: 'Mendoza',
+      country: 'CL',
       description: 'Tres días',
       date: '2027-02-10T09:00',
       link: '',

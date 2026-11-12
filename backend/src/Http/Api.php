@@ -221,6 +221,7 @@ final class Api
             'title' => $event->title,
             'subtitle' => $event->subtitle,
             'venue' => $event->venue,
+            'country' => $event->country,
             'description' => $event->description,
             'date' => $event->date->format(DATE_ATOM),
             'link' => $event->link,

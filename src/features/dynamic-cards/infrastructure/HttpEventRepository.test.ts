@@ -7,6 +7,7 @@ const apiEvents = [
     title: 'Campus de verano',
     subtitle: 'Arqueros y jugadores',
     venue: 'Club Alemán, Mendoza',
+    country: 'ES',
     description: 'Tres días',
     date: '2027-02-10T09:00:00-03:00',
     link: 'https://example.com/inscripcion',
@@ -41,6 +42,7 @@ describe('HttpEventRepository', () => {
       title: 'Campus de verano',
       subtitle: 'Arqueros y jugadores',
       venue: 'Club Alemán, Mendoza',
+      country: 'ES',
       imageUrl: '/uploads/events/event-1.webp',
       startsAt: '2027-02-10',
       time: '09:00',
@@ -54,6 +56,8 @@ describe('HttpEventRepository', () => {
     expect(cards[1].priceLabel).toBeUndefined()
     expect(cards[1].subtitle).toBeUndefined()
     expect(cards[1].venue).toBeUndefined()
+    // Events saved before the country existed count as Argentina
+    expect(cards[1].country).toBe('AR')
     expect(cards[1].ctaUrl).toBeUndefined()
     expect(cards[1].imageUrl).toBeUndefined()
   })

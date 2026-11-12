@@ -1,20 +1,36 @@
 import { useId, useRef } from 'react'
 import { createPortal } from 'react-dom'
-import type { PromoCard } from '../domain/PromoCard'
+import type { PromoCard, PromoCardCategory } from '../domain/PromoCard'
 import { Button, LinkButton } from '../../../shared/ui/Button'
 import { useDialog } from '../../../shared/ui/useDialog'
-import { formatLongDate } from './eventFormat'
+import { useContactModal } from '../../contact/application/contactModalContext'
+import type { Motivo } from '../../contact/domain/motivos'
+import { formatLongDate, formatShortDate } from './eventFormat'
+import { findCountry } from '../../../shared/domain/countries'
 import styles from './EventDetailModal.module.css'
 
 interface EventDetailModalProps {
   card: PromoCard
   toneClass: string
   onClose: () => void
-  onConsult: (card: PromoCard) => void
 }
 
-/** "+ info": everything about one event, with its registration link and a contact shortcut. */
-export const EventDetailModal = ({ card, toneClass, onClose, onConsult }: EventDetailModalProps) => {
+const MOTIVO_BY_CATEGORY: Record<PromoCardCategory, Motivo> = {
+  campus: 'CAMPUS',
+  gira: 'GIRAS',
+  entrenamiento: 'PERSONALIZADOS',
+  novedad: 'OTRO',
+}
+
+/** 'Quiero consultar por "Gira España 2027" (5 jul 2027, Madrid, España).' */
+const consultMessage = (card: PromoCard): string => {
+  const details = [formatShortDate(card.startsAt), card.venue].filter(Boolean).join(', ')
+  return `Quiero consultar por "${card.title}"${details ? ` (${details})` : ''}.`
+}
+
+/** "+ info": everything about one event, with its registration link and a shortcut to ask about it. */
+export const EventDetailModal = ({ card, toneClass, onClose }: EventDetailModalProps) => {
+  const { openContact } = useContactModal()
   const panelRef = useRef<HTMLDivElement>(null)
   const titleId = useId()
   useDialog(panelRef, onClose, 'button')
@@ -24,6 +40,8 @@ export const EventDetailModal = ({ card, toneClass, onClose, onConsult }: EventD
   if (date) facts.push(['Fecha', date])
   if (card.time) facts.push(['Horario', `${card.time} hs`])
   if (card.venue) facts.push(['Sede', card.venue])
+  const country = findCountry(card.country)
+  if (country) facts.push(['País', country.label])
   if (card.priceLabel) facts.push(['Valor', card.priceLabel])
   if (typeof card.spotsLeft === 'number') facts.push(['Cupos', `Quedan ${card.spotsLeft} lugares`])
 
@@ -73,7 +91,7 @@ export const EventDetailModal = ({ card, toneClass, onClose, onConsult }: EventD
               variant={card.ctaUrl ? 'outline' : 'primary'}
               onClick={() => {
                 onClose()
-                onConsult(card)
+                openContact(MOTIVO_BY_CATEGORY[card.category], consultMessage(card), card.country)
               }}
             >
               Consultar

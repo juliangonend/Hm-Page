@@ -71,3 +71,58 @@ describe('ContactForm', () => {
     expect(sender).toHaveBeenCalledTimes(1)
   })
 })
+
+describe('ContactForm via WhatsApp', () => {
+  const setupWhatsapp = (props: { initialMotivo?: string; initialMessage?: string; initialCountry?: string } = {}) => {
+    const openUrl = vi.fn()
+    render(<ContactForm variant="modal" channel="whatsapp" openUrl={openUrl} {...props} />)
+    return { openUrl, user: userEvent.setup() }
+  }
+
+  const sentText = (openUrl: ReturnType<typeof vi.fn>) => new URL(openUrl.mock.calls[0][0]).searchParams.get('text')
+  const sentNumber = (openUrl: ReturnType<typeof vi.fn>) => new URL(openUrl.mock.calls[0][0]).pathname.slice(1)
+
+  it('asks for the country instead of the email', async () => {
+    const { openUrl, user } = setupWhatsapp()
+    expect(screen.queryByLabelText(/Correo/)).not.toBeInTheDocument()
+
+    await user.click(screen.getByRole('button', { name: 'ENVIAR' }))
+
+    expect(screen.getByText('Seleccioná tu país.')).toBeInTheDocument()
+    expect(openUrl).not.toHaveBeenCalled()
+  })
+
+  it('opens the Argentina WhatsApp with name, motivo and message', async () => {
+    const { openUrl, user } = setupWhatsapp()
+    await user.type(screen.getByLabelText(/Nombre/), 'Ana')
+    await user.selectOptions(screen.getByLabelText(/País/), 'Argentina')
+    await user.selectOptions(screen.getByLabelText(/Motivo de consulta/), 'ARQUEROS')
+    await user.type(screen.getByLabelText(/Mensaje/), 'Quiero entrenar')
+    await user.click(screen.getByRole('button', { name: 'ENVIAR' }))
+
+    expect(openUrl).toHaveBeenCalledTimes(1)
+    expect(sentNumber(openUrl)).toBe('542616683140')
+    expect(sentText(openUrl)).toBe('Hola! Soy Ana (Argentina).\nMotivo: ARQUEROS\n\nQuiero entrenar')
+    expect(await screen.findByText('¡Listo! Te abrimos WhatsApp')).toBeInTheDocument()
+  })
+
+  it('can start with the country already chosen', async () => {
+    const { openUrl, user } = setupWhatsapp({ initialMotivo: 'CAMPUS', initialMessage: 'Hola', initialCountry: 'CL' })
+    expect(screen.getByLabelText(/País/)).toHaveValue('CL')
+
+    await user.type(screen.getByLabelText(/Nombre/), 'Ana')
+    await user.click(screen.getByRole('button', { name: 'ENVIAR' }))
+    expect(sentNumber(openUrl)).toBe('34623036136')
+    expect(sentText(openUrl)).toContain('Soy Ana (Chile)')
+  })
+
+  it.each(['Chile', 'España'])('sends %s to the Spain WhatsApp line', async (country) => {
+    const { openUrl, user } = setupWhatsapp({ initialMotivo: 'GIRAS', initialMessage: 'Consulta por la gira' })
+    await user.type(screen.getByLabelText(/Nombre/), 'Ana')
+    await user.selectOptions(screen.getByLabelText(/País/), country)
+    await user.click(screen.getByRole('button', { name: 'ENVIAR' }))
+
+    expect(sentNumber(openUrl)).toBe('34623036136')
+    expect(sentText(openUrl)).toContain('Consulta por la gira')
+  })
+})

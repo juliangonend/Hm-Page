@@ -12,13 +12,15 @@
   padding: 0;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 32px;
+  gap: 24px;
+  max-width: 1080px;
+  margin-inline: auto;
 }
 
 .card {
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
-  min-height: 380px;
+  min-height: 320px;
   background: var(--color-white);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-card);
@@ -35,7 +37,7 @@
 }
 
 .info {
-  padding: 32px;
+  padding: 26px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -52,10 +54,10 @@
 }
 
 .name {
-  margin: 16px 0 20px;
+  margin: 14px 0 16px;
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: clamp(26px, 2.6vw, 34px);
+  font-size: clamp(24px, 2.2vw, 30px);
   line-height: 1.1;
 }
 
@@ -73,8 +75,8 @@
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  font-size: 14px;
+  gap: 8px;
+  font-size: 13.5px;
 }
 
 .achievements li {
@@ -112,6 +114,7 @@
 @media (max-width: 1199px) {
   .list {
     grid-template-columns: 1fr;
+    max-width: 640px;
   }
 }
 
@@ -121,9 +124,9 @@
   }
   .photoWrap {
     order: -1;
-    height: 320px;
+    height: 240px;
   }
   .info {
-    padding: 24px;
+    padding: 20px;
   }
 }

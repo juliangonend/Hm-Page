@@ -1,17 +1,17 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import type { CardsStatus } from '../application/useCards'
 import type { PromoCard, PromoCardCategory } from '../domain/PromoCard'
 import { Button } from '../../../shared/ui/Button'
-import { useGsap } from '../../../shared/motion'
+import { canAnimate, getGsap, useGsap } from '../../../shared/motion'
 import { cx } from '../../../shared/lib/cx'
 import { EventDetailModal, PinIcon } from './EventDetailModal'
 import { formatShortDate } from './eventFormat'
+import { CountryFlag } from '../../../shared/ui/CountryFlag'
 import styles from './DynamicCards.module.css'
 
 interface DynamicCardsViewProps {
   status: CardsStatus
   cards: PromoCard[]
-  onCta: (card: PromoCard) => void
 }
 
 const SKELETON_COUNT = 3
@@ -35,6 +35,7 @@ const EventCard = ({ card, onOpen }: { card: PromoCard; onOpen: (card: PromoCard
           </span>
         )}
         {card.badge && <span className={styles.badge}>{card.badge}</span>}
+        {card.country && <CountryFlag code={card.country} size={30} className={styles.flag} />}
       </div>
       <div className={styles.body}>
         {date && (
@@ -61,9 +62,15 @@ const EventCard = ({ card, onOpen }: { card: PromoCard; onOpen: (card: PromoCard
 }
 
 /** Presentational: renders loading skeletons, cards, or the empty state (also used as error fallback). */
-export const DynamicCardsView = ({ status, cards, onCta }: DynamicCardsViewProps) => {
+export const DynamicCardsView = ({ status, cards }: DynamicCardsViewProps) => {
   const listRef = useRef<HTMLUListElement>(null)
   const [open, setOpen] = useState<PromoCard | null>(null)
+
+  // This section loads after the rest of the page and changes its height: every
+  // scroll animation below it (reveals, the pinned clubs section) must re-measure.
+  useEffect(() => {
+    if (status !== 'loading' && canAnimate()) getGsap().ScrollTrigger.refresh()
+  }, [status])
 
   useGsap(
     listRef,
@@ -120,7 +127,6 @@ export const DynamicCardsView = ({ status, cards, onCta }: DynamicCardsViewProps
           card={open}
           toneClass={CATEGORY_TONE[open.category]}
           onClose={() => setOpen(null)}
-          onConsult={onCta}
         />
       )}
     </>

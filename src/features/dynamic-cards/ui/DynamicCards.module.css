@@ -7,16 +7,27 @@
   margin-bottom: 56px;
 }
 
+/* One horizontal row: centered when the cards fit, scrolls sideways (with snap) when they don't */
 .grid {
   list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  margin: 0 -16px;
+  padding: 24px 16px 32px;
+  display: flex;
+  justify-content: safe center;
+  align-items: stretch;
   gap: 28px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
 }
 
+/*
+ * `translate`/`scale` (not `transform`) so the hover composes with the GSAP
+ * entrance animation, which writes an inline `transform`.
+ */
 .card {
+  flex: 0 0 min(340px, 85vw);
+  scroll-snap-align: center;
   display: flex;
   flex-direction: column;
   background: var(--color-white);
@@ -25,18 +36,31 @@
   overflow: hidden;
   box-shadow: var(--shadow-card);
   transition:
-    transform var(--duration-hover) ease,
-    box-shadow var(--duration-hover) ease;
+    translate 0.35s ease,
+    scale 0.35s ease,
+    opacity 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
 }
 
-.card:not(.skeleton):hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 40px rgba(11, 31, 58, 0.14);
+.card:not(.skeleton):hover,
+.card:not(.skeleton):focus-within {
+  translate: 0 -10px;
+  scale: 1.05;
+  z-index: 1;
+  border-color: var(--color-primary);
+  box-shadow: 0 28px 56px rgba(11, 31, 58, 0.22);
+}
+
+/* The rest step back so the hovered card takes the spotlight */
+.grid:has(.card:hover) .card:not(:hover) {
+  opacity: 0.6;
+  scale: 0.97;
 }
 
 .media {
   position: relative;
-  height: 168px;
+  height: 200px;
   overflow: hidden;
 }
 
@@ -44,6 +68,25 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: scale 0.6s ease;
+}
+
+.card:hover .image {
+  scale: 1.08;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .image {
+    transition: none;
+  }
+  .card:not(.skeleton):hover,
+  .card:not(.skeleton):focus-within,
+  .card:hover .image,
+  .grid:has(.card:hover) .card:not(:hover) {
+    translate: none;
+    scale: none;
+  }
 }
 
 .toneCampus {
@@ -73,6 +116,13 @@
   text-transform: uppercase;
 }
 
+.flag {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3), 0 0 0 2px var(--color-white) !important;
+}
+
 /* Venue "sign" pinned on the photo */
 .venue {
   position: absolute;
@@ -81,7 +131,7 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  max-width: calc(100% - 32px);
+  max-width: calc(100% - 72px);
   padding: 6px 12px;
   border-radius: var(--radius-button);
   background: var(--color-dark-blue);

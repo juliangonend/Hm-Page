@@ -1,5 +1,6 @@
 import type { CardRepository } from '../domain/CardRepository'
 import type { PromoCard } from '../domain/PromoCard'
+import { toCountryCode } from '../../../shared/domain/countries'
 
 /** Public event as served by GET /api/events. */
 interface ApiEvent {
@@ -7,6 +8,8 @@ interface ApiEvent {
   title: string
   subtitle: string | null
   venue: string | null
+  /** Missing on APIs deployed before the country column existed */
+  country?: string
   description: string
   date: string
   link: string | null
@@ -33,6 +36,7 @@ const toCard = (event: ApiEvent, index: number): PromoCard => ({
   title: event.title,
   subtitle: event.subtitle ?? undefined,
   venue: event.venue ?? undefined,
+  country: toCountryCode(event.country),
   description: event.description,
   imageUrl: event.imageUrl ?? undefined,
   priceLabel: event.price === null ? undefined : formatPrice(event.price, event.currency),

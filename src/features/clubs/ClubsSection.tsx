@@ -50,9 +50,7 @@ const playClubsMotion = (ctx: GsapSetupContext) => {
     }
   })
 
-  mm.add('(max-width: 991px), (prefers-reduced-motion: reduce)', () => {
-    revealUp(ctx, rows, scope)
-  })
+  // Mobile and reduced motion: the rows stay visible as plain content (no scroll reveal)
 
   return () => mm.revert()
 }

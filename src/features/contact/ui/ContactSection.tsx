@@ -36,7 +36,7 @@ export const ContactSection = () => {
         <div className={styles.copy}>
           <SectionTitle id="contact-title" text="Viví la experiencia Hockey Management" className={styles.title} />
           <p className={styles.lead} data-reveal>
-            Completá tus datos y te contamos cómo formar parte. Te respondemos en menos de 48 h.
+            Completá tus datos y seguimos la charla por WhatsApp para contarte cómo formar parte.
           </p>
           <ul className={styles.channels}>
             {CHANNELS.map(({ label, href, Icon }) => (
@@ -52,7 +52,7 @@ export const ContactSection = () => {
 
         <div className={styles.card} data-reveal>
           <h3 className={styles.cardTitle}>Quiero sumarme</h3>
-          <ContactForm variant="inline" />
+          <ContactForm variant="inline" channel="whatsapp" />
         </div>
       </div>
     </section>

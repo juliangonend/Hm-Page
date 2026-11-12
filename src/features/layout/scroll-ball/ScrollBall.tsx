@@ -9,7 +9,7 @@ const BALL_SIZE = 40
 
 /**
  * A hockey ball that rolls down a chalk line next to the scrollbar, following the page scroll.
- * Clicking the line jumps to that point of the page. Hidden on touch devices.
+ * Clicking the line jumps to that point of the page. Smaller and display-only on touch devices.
  */
 export const ScrollBall = () => {
   const trackRef = useRef<HTMLDivElement>(null)
@@ -31,7 +31,8 @@ export const ScrollBall = () => {
         scrollHeight: document.documentElement.scrollHeight,
         viewportHeight: window.innerHeight,
         trackLength: track.clientHeight,
-        ballSize: BALL_SIZE,
+        // CSS shrinks the ball on small screens: measure it instead of trusting BALL_SIZE
+        ballSize: ball.offsetWidth || BALL_SIZE,
       })
       ball.style.transform = `translate3d(0, ${offset}px, 0)`
       // The spin group already sets its transform-origin to the ball center

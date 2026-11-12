@@ -27,6 +27,7 @@ final class ApiTest extends TestCase
         'title' => 'Campus de verano',
         'subtitle' => 'Arqueros y jugadores de campo',
         'venue' => 'Club Alemán, Mendoza',
+        'country' => 'CL',
         'description' => 'Tres días de entrenamiento intensivo.',
         'date' => '2027-02-10T09:00',
         'link' => 'https://example.com/campus',
@@ -110,6 +111,7 @@ final class ApiTest extends TestCase
         self::assertSame('Campus de verano', $event['title']);
         self::assertSame('Arqueros y jugadores de campo', $event['subtitle']);
         self::assertSame('Club Alemán, Mendoza', $event['venue']);
+        self::assertSame('CL', $event['country']);
         self::assertSame('45000.00', $event['price']);
         self::assertSame('2027-02-10T09:00:00-03:00', $event['date']);
         self::assertNull($event['imageUrl']);

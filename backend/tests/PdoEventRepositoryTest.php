@@ -27,6 +27,7 @@ final class PdoEventRepositoryTest extends TestCase
             title: $title,
             subtitle: "Subtítulo de $title",
             venue: 'Club Alemán, Mendoza',
+            country: 'ES',
             description: "Descripción de $title",
             date: new DateTimeImmutable($date, $this->tz),
             link: null,
@@ -46,6 +47,7 @@ final class PdoEventRepositoryTest extends TestCase
         self::assertSame('Campus', $found->title);
         self::assertSame('Subtítulo de Campus', $found->subtitle);
         self::assertSame('Club Alemán, Mendoza', $found->venue);
+        self::assertSame('ES', $found->country);
         self::assertSame('1500.00', $found->price);
         self::assertSame('2027-02-01 09:00', $found->date->format('Y-m-d H:i'));
         self::assertNull($found->imagePath);

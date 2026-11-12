@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { validateContact, CONTACT_ERRORS } from './validateContact'
 
-const valid = { name: 'Ana', email: 'ana@mail.com', motivo: 'JUGADORES', message: 'Hola' }
+const valid = { name: 'Ana', email: 'ana@mail.com', country: '', motivo: 'JUGADORES', message: 'Hola' }
 
 describe('validateContact', () => {
   it('accepts a complete form', () => {
@@ -9,7 +9,7 @@ describe('validateContact', () => {
   })
 
   it('requires every field', () => {
-    expect(validateContact({ name: ' ', email: '', motivo: '', message: '  ' })).toEqual({
+    expect(validateContact({ name: ' ', email: '', country: '', motivo: '', message: '  ' })).toEqual({
       name: CONTACT_ERRORS.name,
       email: CONTACT_ERRORS.email,
       motivo: CONTACT_ERRORS.motivo,

@@ -6,10 +6,12 @@ import styles from './ContactModal.module.css'
 
 interface ContactModalProps {
   initialMotivo?: string
+  initialMessage?: string
+  initialCountry?: string
   onClose: () => void
 }
 
-export const ContactModal = ({ initialMotivo, onClose }: ContactModalProps) => {
+export const ContactModal = ({ initialMotivo, initialMessage, initialCountry, onClose }: ContactModalProps) => {
   const panelRef = useRef<HTMLDivElement>(null)
   useDialog(panelRef, onClose, 'input, select, textarea')
 
@@ -31,9 +33,17 @@ export const ContactModal = ({ initialMotivo, onClose }: ContactModalProps) => {
           Contactanos
         </h2>
         <p id="contact-modal-subtitle" className={styles.subtitle}>
-          Completá el formulario y te respondemos a la brevedad.
+          Completá el formulario y te abrimos WhatsApp con tu consulta lista para enviar.
         </p>
-        <ContactForm variant="modal" initialMotivo={initialMotivo} onCancel={onClose} onSent={onClose} />
+        <ContactForm
+          variant="modal"
+          channel="whatsapp"
+          initialMotivo={initialMotivo}
+          initialMessage={initialMessage}
+          initialCountry={initialCountry}
+          onCancel={onClose}
+          onSent={onClose}
+        />
       </div>
     </div>,
     document.body,
