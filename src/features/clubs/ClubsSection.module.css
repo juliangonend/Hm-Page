@@ -104,7 +104,8 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transform-origin: center;
+  object-position: 62% 50%; /* keep the coach in frame on the portrait crop */
+  transform-origin: 62% 50%;
 }
 
 .play {

@@ -102,8 +102,8 @@ export const ClubsSection = () => {
 
         <div className={styles.media}>
           <img
-            src={asset('campus2.webp')}
-            alt="Equipo de hockey durante una gira de Hockey Management"
+            src={asset('club-foto.webp')}
+            alt="Entrenador de Hockey Management dando indicaciones a un plantel de hockey en la cancha"
             className={styles.image}
             loading="lazy"
             data-club-image

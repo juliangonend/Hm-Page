@@ -74,9 +74,10 @@
 }
 
 /* ---------- Center copy ---------- */
+/* Above every logo plane (even a hovered one) so a drifting logo can never cover the text or the CTA */
 .copy {
   position: relative;
-  z-index: 3;
+  z-index: 7;
   max-width: 900px;
   text-align: center;
 }

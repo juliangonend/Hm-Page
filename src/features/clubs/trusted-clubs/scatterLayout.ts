@@ -13,8 +13,16 @@ export interface LogoSpot {
 /** Ellipse (in %) kept free so the headline, subtitle and CTA stay readable. */
 export const CENTER_ZONE = { cx: 50, cy: 52, rx: 30, ry: 26 }
 
-export const isInCenterZone = (x: number, y: number) =>
-  ((x - CENTER_ZONE.cx) / CENTER_ZONE.rx) ** 2 + ((y - CENTER_ZONE.cy) / CENTER_ZONE.ry) ** 2 < 1
+/**
+ * Extra margin (in %) around the center zone per depth: the zone tests the logo CENTER,
+ * so big near logos need room for their radius or their edges land on the CTA.
+ */
+export const CLEARANCE: Record<Depth, number> = { far: 0, mid: 5, near: 10 }
+
+export const isInCenterZone = (x: number, y: number, clearance = 0) =>
+  ((x - CENTER_ZONE.cx) / (CENTER_ZONE.rx + clearance)) ** 2 +
+    ((y - CENTER_ZONE.cy) / (CENTER_ZONE.ry + clearance)) ** 2 <
+  1
 
 /** Deterministic pseudo-random in [0, 1). */
 const noise = (i: number, salt: number) => {
@@ -44,8 +52,8 @@ export const scatterLayout = (): LogoSpot[] => {
       const i = row * COLS + col
       const x = ((col + 0.5 + (noise(i, 1) - 0.5) * 0.8) / COLS) * 100
       const y = ((row + 0.5 + (noise(i, 2) - 0.5) * 0.8) / ROWS) * 100
-      if (isInCenterZone(x, y)) continue
       const depth = pickDepth(noise(i, 3))
+      if (isInCenterZone(x, y, CLEARANCE[depth])) continue
       const [min, max] = SIZE_RANGE[depth]
       spots.push({
         x: +x.toFixed(2),

@@ -1,9 +1,11 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import type { CardsStatus } from '../application/useCards'
 import type { PromoCard, PromoCardCategory } from '../domain/PromoCard'
-import { Button, LinkButton } from '../../../shared/ui/Button'
+import { Button } from '../../../shared/ui/Button'
 import { useGsap } from '../../../shared/motion'
 import { cx } from '../../../shared/lib/cx'
+import { EventDetailModal, PinIcon } from './EventDetailModal'
+import { formatShortDate } from './eventFormat'
 import styles from './DynamicCards.module.css'
 
 interface DynamicCardsViewProps {
@@ -21,42 +23,37 @@ const CATEGORY_TONE: Record<PromoCardCategory, string> = {
   novedad: styles.toneNovedad,
 }
 
-const formatDate = (iso?: string): string | null => {
-  if (!iso) return null
-  const date = new Date(`${iso}T12:00:00`)
-  if (Number.isNaN(date.getTime())) return null
-  return date.toLocaleDateString('es-AR', { day: 'numeric', month: 'short', year: 'numeric' })
-}
-
-const EventCard = ({ card, onCta }: { card: PromoCard; onCta: (card: PromoCard) => void }) => {
-  const date = formatDate(card.startsAt)
+const EventCard = ({ card, onOpen }: { card: PromoCard; onOpen: (card: PromoCard) => void }) => {
+  const date = formatShortDate(card.startsAt)
   return (
     <li className={styles.card} data-event-card>
       <div className={cx(styles.media, CATEGORY_TONE[card.category])}>
         {card.imageUrl && <img src={card.imageUrl} alt="" loading="lazy" className={styles.image} />}
+        {card.venue && (
+          <span className={styles.venue}>
+            <PinIcon /> {card.venue}
+          </span>
+        )}
         {card.badge && <span className={styles.badge}>{card.badge}</span>}
       </div>
       <div className={styles.body}>
         {date && (
           <time className={styles.date} dateTime={card.startsAt}>
             {date}
+            {card.time ? ` · ${card.time} hs` : null}
           </time>
         )}
         <h3 className={styles.title}>{card.title}</h3>
+        {card.subtitle && <p className={styles.subtitle}>{card.subtitle}</p>}
         <p className={styles.description}>{card.description}</p>
         <div className={styles.footer}>
+          {card.priceLabel && <span className={styles.price}>{card.priceLabel}</span>}
           {typeof card.spotsLeft === 'number' && (
             <span className={styles.spots}>Quedan {card.spotsLeft} lugares</span>
           )}
-          {card.ctaUrl ? (
-            <LinkButton href={card.ctaUrl} target="_blank" rel="noreferrer" size="small">
-              {card.ctaLabel} →
-            </LinkButton>
-          ) : (
-            <Button size="small" onClick={() => onCta(card)}>
-              {card.ctaLabel} →
-            </Button>
-          )}
+          <Button size="small" onClick={() => onOpen(card)} aria-label={`+ info sobre ${card.title}`}>
+            + info
+          </Button>
         </div>
       </div>
     </li>
@@ -66,6 +63,7 @@ const EventCard = ({ card, onCta }: { card: PromoCard; onCta: (card: PromoCard) 
 /** Presentational: renders loading skeletons, cards, or the empty state (also used as error fallback). */
 export const DynamicCardsView = ({ status, cards, onCta }: DynamicCardsViewProps) => {
   const listRef = useRef<HTMLUListElement>(null)
+  const [open, setOpen] = useState<PromoCard | null>(null)
 
   useGsap(
     listRef,
@@ -111,10 +109,20 @@ export const DynamicCardsView = ({ status, cards, onCta }: DynamicCardsViewProps
   }
 
   return (
-    <ul ref={listRef} className={styles.grid}>
-      {cards.map((card) => (
-        <EventCard key={card.id} card={card} onCta={onCta} />
-      ))}
-    </ul>
+    <>
+      <ul ref={listRef} className={styles.grid}>
+        {cards.map((card) => (
+          <EventCard key={card.id} card={card} onOpen={setOpen} />
+        ))}
+      </ul>
+      {open && (
+        <EventDetailModal
+          card={open}
+          toneClass={CATEGORY_TONE[open.category]}
+          onClose={() => setOpen(null)}
+          onConsult={onCta}
+        />
+      )}
+    </>
   )
 }

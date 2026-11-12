@@ -1,14 +1,13 @@
 import type { CardRepository } from '../domain/CardRepository'
+import { API_BASE, hasApi } from '../../../shared/api/apiBase'
+import { HttpEventRepository } from './HttpEventRepository'
 import { InMemoryEventRepository } from './InMemoryEventRepository'
 
 /**
  * Composition root for upcoming events (dynamic cards).
- *
- * This is the ONLY place to change when the back office is chosen:
- * implement `CardRepository` in a new adapter inside this folder
- * (e.g. SupabaseEventRepository, SanityEventRepository, SheetsEventRepository)
- * and return it here. Nothing else in the app needs to change.
+ * Builds with VITE_API_URL (Hostinger) read the PHP back office; any other build uses the in-memory sample data.
  */
-export const createCardRepository = (): CardRepository => new InMemoryEventRepository()
+export const createCardRepository = (): CardRepository =>
+  hasApi() ? new HttpEventRepository(API_BASE) : new InMemoryEventRepository()
 
 export const cardRepository: CardRepository = createCardRepository()

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { CENTER_ZONE, isInCenterZone, scatterLayout } from './scatterLayout'
+import { CENTER_ZONE, CLEARANCE, isInCenterZone, scatterLayout } from './scatterLayout'
 
 describe('scatterLayout', () => {
   const layout = scatterLayout()
@@ -10,6 +10,14 @@ describe('scatterLayout', () => {
 
   it('keeps the center free for the headline', () => {
     expect(layout.some((spot) => isInCenterZone(spot.x, spot.y))).toBe(false)
+  })
+
+  it('keeps big logos far enough from the center that their edges never cover the copy', () => {
+    for (const spot of layout) {
+      expect(isInCenterZone(spot.x, spot.y, CLEARANCE[spot.depth])).toBe(false)
+    }
+    expect(CLEARANCE.near).toBeGreaterThan(CLEARANCE.mid)
+    expect(CLEARANCE.mid).toBeGreaterThan(CLEARANCE.far)
   })
 
   it('keeps every logo inside the section', () => {

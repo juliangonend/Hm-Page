@@ -7,6 +7,10 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "build:hostinger": "tsc -b && VITE_API_URL=/api vite build --base=/",
+    "dev:full": "VITE_API_URL=/api vite",
+    "api:setup": "php backend/bin/setup-local.php",
+    "api:dev": "php -S localhost:8000 -t backend/public backend/public/index.php",
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",

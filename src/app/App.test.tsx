@@ -9,10 +9,10 @@ describe('App', () => {
     render(<App />)
 
     expect(screen.getByRole('heading', { level: 1, name: 'Hockey Management' })).toBeInTheDocument()
-    for (const id of ['aboutUs', 'ourServices', 'teams', 'clubes-confian', 'co-funders', 'contacts']) {
+    for (const id of ['aboutUs', 'ourServices', 'teams', 'clubes-confian', 'testimonios', 'co-funders', 'contacts']) {
       expect(document.getElementById(id)).not.toBeNull()
     }
-    // "Próximos eventos" stays hidden until the back office is ready
+    // "Próximos eventos" only renders when the build has a back office API (VITE_API_URL)
     expect(document.getElementById('events')).toBeNull()
 
     await user.click(screen.getByRole('button', { name: 'Inscribirme en Arqueros' }))
