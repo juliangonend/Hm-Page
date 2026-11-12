@@ -22,3 +22,19 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Local backend files (never commit: secrets, local DB, dependencies, uploads)
+backend/vendor/
+backend/config.php
+backend/local.sqlite
+backend/.phpunit.result.cache
+backend/.phpunit.cache/
+backend/public/uploads/
+
+# Deploy bundles
+backend.zip
+hm-api.zip
+hm-web.zip
+
+# Local agent tooling
+.atl/
