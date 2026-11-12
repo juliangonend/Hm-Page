@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
-import { validateContact, CONTACT_ERRORS } from './validateContact'
+import { validateContact, whatsappMessage, CONTACT_ERRORS } from './validateContact'
 
-const valid = { name: 'Ana', email: 'ana@mail.com', country: '', motivo: 'JUGADORES', message: 'Hola' }
+const valid = { name: 'Ana', country: 'AR', motivo: 'JUGADORES', message: 'Hola' }
 
 describe('validateContact', () => {
   it('accepts a complete form', () => {
@@ -9,15 +9,23 @@ describe('validateContact', () => {
   })
 
   it('requires every field', () => {
-    expect(validateContact({ name: ' ', email: '', country: '', motivo: '', message: '  ' })).toEqual({
+    expect(validateContact({ name: ' ', country: '', motivo: '', message: '  ' })).toEqual({
       name: CONTACT_ERRORS.name,
-      email: CONTACT_ERRORS.email,
+      country: CONTACT_ERRORS.country,
       motivo: CONTACT_ERRORS.motivo,
       message: CONTACT_ERRORS.message,
     })
   })
 
-  it.each(['ana', 'ana@', 'ana@mail', '@mail.com', 'ana mail@x.com'])('rejects invalid email %s', (email) => {
-    expect(validateContact({ ...valid, email }).email).toBe('Ingresá un correo válido.')
+  it('rejects a country without a WhatsApp line', () => {
+    expect(validateContact({ ...valid, country: 'BR' }).country).toBe(CONTACT_ERRORS.country)
+  })
+})
+
+describe('whatsappMessage', () => {
+  it('introduces the person with the country name, motivo and message', () => {
+    expect(whatsappMessage({ ...valid, name: ' Ana ', message: ' Quiero entrenar ' })).toBe(
+      'Hola! Soy Ana (Argentina).\nMotivo: JUGADORES\n\nQuiero entrenar',
+    )
   })
 })

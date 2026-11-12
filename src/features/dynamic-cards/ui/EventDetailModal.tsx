@@ -5,7 +5,7 @@ import { Button, LinkButton } from '../../../shared/ui/Button'
 import { useDialog } from '../../../shared/ui/useDialog'
 import { useContactModal } from '../../contact/application/contactModalContext'
 import type { Motivo } from '../../contact/domain/motivos'
-import { formatLongDate, formatShortDate } from './eventFormat'
+import { formatDateRange } from './eventFormat'
 import { findCountry } from '../../../shared/domain/countries'
 import styles from './EventDetailModal.module.css'
 
@@ -24,7 +24,7 @@ const MOTIVO_BY_CATEGORY: Record<PromoCardCategory, Motivo> = {
 
 /** 'Quiero consultar por "Gira España 2027" (5 jul 2027, Madrid, España).' */
 const consultMessage = (card: PromoCard): string => {
-  const details = [formatShortDate(card.startsAt), card.venue].filter(Boolean).join(', ')
+  const details = [formatDateRange(card.startsAt, card.endsAt), card.venue].filter(Boolean).join(', ')
   return `Quiero consultar por "${card.title}"${details ? ` (${details})` : ''}.`
 }
 
@@ -34,11 +34,10 @@ export const EventDetailModal = ({ card, toneClass, onClose }: EventDetailModalP
   const panelRef = useRef<HTMLDivElement>(null)
   const titleId = useId()
   useDialog(panelRef, onClose, 'button')
-  const date = formatLongDate(card.startsAt)
+  const date = formatDateRange(card.startsAt, card.endsAt, 'long')
 
   const facts: Array<[string, string]> = []
   if (date) facts.push(['Fecha', date])
-  if (card.time) facts.push(['Horario', `${card.time} hs`])
   if (card.venue) facts.push(['Sede', card.venue])
   const country = findCountry(card.country)
   if (country) facts.push(['País', country.label])

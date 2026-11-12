@@ -5,7 +5,7 @@ import { Button } from '../../../shared/ui/Button'
 import { canAnimate, getGsap, useGsap } from '../../../shared/motion'
 import { cx } from '../../../shared/lib/cx'
 import { EventDetailModal, PinIcon } from './EventDetailModal'
-import { formatShortDate } from './eventFormat'
+import { formatDateRange } from './eventFormat'
 import { CountryFlag } from '../../../shared/ui/CountryFlag'
 import styles from './DynamicCards.module.css'
 
@@ -24,16 +24,11 @@ const CATEGORY_TONE: Record<PromoCardCategory, string> = {
 }
 
 const EventCard = ({ card, onOpen }: { card: PromoCard; onOpen: (card: PromoCard) => void }) => {
-  const date = formatShortDate(card.startsAt)
+  const date = formatDateRange(card.startsAt, card.endsAt)
   return (
     <li className={styles.card} data-event-card>
       <div className={cx(styles.media, CATEGORY_TONE[card.category])}>
         {card.imageUrl && <img src={card.imageUrl} alt="" loading="lazy" className={styles.image} />}
-        {card.venue && (
-          <span className={styles.venue}>
-            <PinIcon /> {card.venue}
-          </span>
-        )}
         {card.badge && <span className={styles.badge}>{card.badge}</span>}
         {card.country && <CountryFlag code={card.country} size={30} className={styles.flag} />}
       </div>
@@ -41,11 +36,15 @@ const EventCard = ({ card, onOpen }: { card: PromoCard; onOpen: (card: PromoCard
         {date && (
           <time className={styles.date} dateTime={card.startsAt}>
             {date}
-            {card.time ? ` · ${card.time} hs` : null}
           </time>
         )}
         <h3 className={styles.title}>{card.title}</h3>
         {card.subtitle && <p className={styles.subtitle}>{card.subtitle}</p>}
+        {card.venue && (
+          <p className={styles.venue}>
+            <PinIcon /> {card.venue}
+          </p>
+        )}
         <p className={styles.description}>{card.description}</p>
         <div className={styles.footer}>
           {card.priceLabel && <span className={styles.price}>{card.priceLabel}</span>}

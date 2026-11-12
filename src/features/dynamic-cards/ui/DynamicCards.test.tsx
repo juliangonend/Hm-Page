@@ -26,7 +26,7 @@ const cards: PromoCard[] = [
     venue: 'Madrid, España',
     country: 'ES',
     startsAt: '2027-07-05',
-    time: '09:30',
+    endsAt: '2027-07-12',
     priceLabel: '$ 1.500.000',
     description: 'Partidos y actividades.\nIncluye traslados.',
     ctaLabel: 'Más info',
@@ -51,11 +51,19 @@ describe('DynamicCardsView', () => {
     expect(screen.queryByTestId('card-skeleton')).not.toBeInTheDocument()
   })
 
-  it('shows the subtitle, the venue sign and the price on the card', () => {
+  it('shows the date range without time, the subtitle with the venue under it and the price', () => {
     render(<DynamicCardsView status="ready" cards={cards} />)
     const card = screen.getByRole('heading', { name: 'Gira España 2027' }).closest('li') as HTMLElement
-    expect(within(card).getByText('Sub 16 y Sub 18')).toBeInTheDocument()
-    expect(within(card).getByText('Madrid, España')).toBeInTheDocument()
+
+    const date = card.querySelector('time') as HTMLElement
+    expect(date).toHaveTextContent(/5.*12.*jul.*2027/)
+    expect(date).not.toHaveTextContent(/hs/)
+
+    const subtitle = within(card).getByText('Sub 16 y Sub 18')
+    const venue = within(card).getByText('Madrid, España')
+    // The venue now sits in the body, right after the subtitle (no longer a sign on the photo)
+    expect(subtitle.compareDocumentPosition(venue) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
+    expect(card.querySelector('img, [class*="media"]')?.textContent ?? '').not.toContain('Madrid')
     expect(within(card).getByText('$ 1.500.000')).toBeInTheDocument()
   })
 
@@ -69,7 +77,8 @@ describe('DynamicCardsView', () => {
     expect(within(dialog).getByText('Sub 16 y Sub 18')).toBeInTheDocument()
     // Venue appears as the sign on the photo and in the facts list
     expect(within(dialog).getAllByText('Madrid, España')).toHaveLength(2)
-    expect(within(dialog).getByText(/09:30/)).toBeInTheDocument()
+    expect(within(dialog).queryByText('Horario')).not.toBeInTheDocument()
+    expect(within(dialog).getByText('Fecha').nextElementSibling).toHaveTextContent(/5.*12.*julio.*2027/)
     expect(within(dialog).getByText('$ 1.500.000')).toBeInTheDocument()
     expect(within(dialog).getByText(/Incluye traslados/)).toBeInTheDocument()
     expect(within(dialog).getByRole('link', { name: /Más info/ })).toHaveAttribute('href', 'https://example.com/gira')

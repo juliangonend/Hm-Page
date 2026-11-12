@@ -2,7 +2,7 @@
 
 Requires Pillow (pip install pillow). Writes PNG; convert to WebP for the site.
 
-Usage: python scripts/make-club-stickers.py public/clubs public/clubs/stickers stm=stm.png old-gabs=oldgabs.jpeg
+Usage: python scripts/make-club-stickers.py scripts/club-logos public/clubs/stickers stm=stm.png old-gabs=oldgabs.jpeg
 """
 import sys
 from collections import deque

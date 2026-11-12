@@ -52,7 +52,7 @@ export const ContactSection = () => {
 
         <div className={styles.card} data-reveal>
           <h3 className={styles.cardTitle}>Quiero sumarme</h3>
-          <ContactForm variant="inline" channel="whatsapp" />
+          <ContactForm variant="inline" />
         </div>
       </div>
     </section>

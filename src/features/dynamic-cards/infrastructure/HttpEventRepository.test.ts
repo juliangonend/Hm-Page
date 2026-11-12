@@ -10,6 +10,7 @@ const apiEvents = [
     country: 'ES',
     description: 'Tres días',
     date: '2027-02-10T09:00:00-03:00',
+    endDate: '2027-02-12',
     link: 'https://example.com/inscripcion',
     price: '45000.00',
     currency: 'ARS',
@@ -23,6 +24,7 @@ const apiEvents = [
     venue: null,
     description: 'Gratis',
     date: '2027-03-01T18:00:00-03:00',
+    endDate: null,
     link: null,
     price: null,
     currency: 'ARS',
@@ -45,7 +47,7 @@ describe('HttpEventRepository', () => {
       country: 'ES',
       imageUrl: '/uploads/events/event-1.webp',
       startsAt: '2027-02-10',
-      time: '09:00',
+      endsAt: '2027-02-12',
       ctaLabel: 'Inscribirme',
       ctaUrl: 'https://example.com/inscripcion',
       published: true,
@@ -56,6 +58,8 @@ describe('HttpEventRepository', () => {
     expect(cards[1].priceLabel).toBeUndefined()
     expect(cards[1].subtitle).toBeUndefined()
     expect(cards[1].venue).toBeUndefined()
+    expect(cards[1].endsAt).toBeUndefined()
+    expect(cards[0]).not.toHaveProperty('time')
     // Events saved before the country existed count as Argentina
     expect(cards[1].country).toBe('AR')
     expect(cards[1].ctaUrl).toBeUndefined()

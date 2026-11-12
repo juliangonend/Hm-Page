@@ -16,6 +16,7 @@ CREATE TABLE IF NOT EXISTS events (
   country      CHAR(2)       NOT NULL DEFAULT 'AR',
   description  TEXT          NOT NULL,
   event_date   DATETIME      NOT NULL,
+  end_date     DATE          NULL,
   link         VARCHAR(500)  NULL,
   price        DECIMAL(10,2) NULL,
   currency     CHAR(3)       NOT NULL DEFAULT 'ARS',

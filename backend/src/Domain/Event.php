@@ -20,6 +20,8 @@ final class Event
         public readonly string $country,
         public readonly string $description,
         public readonly DateTimeImmutable $date,
+        /** Last day of a multi-day event (date only), or null for a one-day event. */
+        public readonly ?DateTimeImmutable $endDate,
         public readonly ?string $link,
         /** Decimal string with two places ("45000.00"), or null when the event has no price. */
         public readonly ?string $price,

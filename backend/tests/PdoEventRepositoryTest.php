@@ -21,7 +21,7 @@ final class PdoEventRepositoryTest extends TestCase
         $this->repo = new PdoEventRepository(TestDatabase::create(), $this->tz);
     }
 
-    private function data(string $title, string $date, bool $published = true, ?string $price = null): EventData
+    private function data(string $title, string $date, bool $published = true, ?string $price = null, ?string $endDate = null): EventData
     {
         return new EventData(
             title: $title,
@@ -30,6 +30,7 @@ final class PdoEventRepositoryTest extends TestCase
             country: 'ES',
             description: "Descripción de $title",
             date: new DateTimeImmutable($date, $this->tz),
+            endDate: $endDate === null ? null : new DateTimeImmutable($endDate, $this->tz),
             link: null,
             price: $price,
             currency: 'ARS',
@@ -40,7 +41,7 @@ final class PdoEventRepositoryTest extends TestCase
     public function testCreatesAndFindsAnEvent(): void
     {
         $now = new DateTimeImmutable('2027-01-01 10:00', $this->tz);
-        $created = $this->repo->create($this->data('Campus', '2027-02-01 09:00', price: '1500.00'), $now);
+        $created = $this->repo->create($this->data('Campus', '2027-02-01 09:00', price: '1500.00', endDate: '2027-02-03'), $now);
 
         $found = $this->repo->find($created->id);
         self::assertNotNull($found);
@@ -50,6 +51,7 @@ final class PdoEventRepositoryTest extends TestCase
         self::assertSame('ES', $found->country);
         self::assertSame('1500.00', $found->price);
         self::assertSame('2027-02-01 09:00', $found->date->format('Y-m-d H:i'));
+        self::assertSame('2027-02-03', $found->endDate?->format('Y-m-d'));
         self::assertNull($found->imagePath);
     }
 
@@ -64,6 +66,15 @@ final class PdoEventRepositoryTest extends TestCase
         $titles = array_map(fn ($e) => $e->title, $this->repo->upcoming($now));
 
         self::assertSame(['Próximo', 'Lejano'], $titles);
+    }
+
+    public function testUpcomingKeepsAMultiDayEventUntilItsLastDay(): void
+    {
+        $now = new DateTimeImmutable('2027-01-10 12:00', $this->tz);
+        $this->repo->create($this->data('En curso', '2027-01-08 09:00', endDate: '2027-01-10'), $now);
+        $this->repo->create($this->data('Terminado', '2027-01-07 09:00', endDate: '2027-01-09'), $now);
+
+        self::assertSame(['En curso'], array_map(fn ($e) => $e->title, $this->repo->upcoming($now)));
     }
 
     public function testAllReturnsEveryEventNewestDateFirst(): void

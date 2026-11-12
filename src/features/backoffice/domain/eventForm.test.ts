@@ -10,6 +10,7 @@ const EVENT: AdminEvent = {
   country: 'CL',
   description: 'Tres días',
   date: '2027-02-10T09:00:00-03:00',
+  endDate: '2027-02-12',
   link: 'https://example.com',
   price: '45000.50',
   currency: 'ARS',
@@ -26,6 +27,7 @@ describe('eventForm', () => {
       country: 'AR',
       description: '',
       date: '',
+      endDate: '',
       link: '',
       price: '',
       currency: 'ARS',
@@ -41,6 +43,7 @@ describe('eventForm', () => {
       country: 'CL',
       description: 'Tres días',
       date: '2027-02-10T09:00',
+      endDate: '2027-02-12',
       link: 'https://example.com',
       price: '45000.50',
       currency: 'ARS',
@@ -49,8 +52,9 @@ describe('eventForm', () => {
   })
 
   it('maps missing optional fields to empty inputs', () => {
-    expect(toFormValues({ ...EVENT, subtitle: null, venue: null, link: null, price: null })).toMatchObject({
+    expect(toFormValues({ ...EVENT, subtitle: null, venue: null, endDate: null, link: null, price: null })).toMatchObject({
       subtitle: '',
+      endDate: '',
       venue: '',
       link: '',
       price: '',
@@ -67,6 +71,7 @@ describe('eventForm', () => {
       country: 'CL',
       description: 'Tres días',
       date: '2027-02-10T09:00',
+      endDate: '2027-02-12',
       link: '',
       price: '100',
       currency: 'ARS',

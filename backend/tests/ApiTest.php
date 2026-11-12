@@ -30,6 +30,7 @@ final class ApiTest extends TestCase
         'country' => 'CL',
         'description' => 'Tres días de entrenamiento intensivo.',
         'date' => '2027-02-10T09:00',
+        'endDate' => '2027-02-12',
         'link' => 'https://example.com/campus',
         'price' => '45000',
     ];
@@ -114,6 +115,7 @@ final class ApiTest extends TestCase
         self::assertSame('CL', $event['country']);
         self::assertSame('45000.00', $event['price']);
         self::assertSame('2027-02-10T09:00:00-03:00', $event['date']);
+        self::assertSame('2027-02-12', $event['endDate']);
         self::assertNull($event['imageUrl']);
 
         $id = $event['id'];
@@ -148,7 +150,7 @@ final class ApiTest extends TestCase
         $this->login();
         $this->call('POST', '/admin/events', self::EVENT);
         $this->call('POST', '/admin/events', ['title' => 'Borrador', 'published' => false] + self::EVENT);
-        $this->call('POST', '/admin/events', ['title' => 'Pasado', 'date' => '2026-12-01T10:00'] + self::EVENT);
+        $this->call('POST', '/admin/events', ['title' => 'Pasado', 'date' => '2026-12-01T10:00', 'endDate' => ''] + self::EVENT);
         $this->call('POST', '/auth/logout');
 
         $response = $this->call('GET', '/events');

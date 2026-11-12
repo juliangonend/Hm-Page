@@ -1,6 +1,5 @@
 export { getGsap, canAnimate, prefersReducedMotion } from './gsap'
 export { useGsap, type GsapSetupContext } from './useGsap'
 export { useWordReveal } from './useWordReveal'
-export { usePrefersReducedMotion } from './usePrefersReducedMotion'
-export { fadeInFinal, revealUp } from './fadeIn'
+export { revealUp } from './fadeIn'
 export { markIntroDone, onIntroDone } from './introSignal'

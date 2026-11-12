@@ -39,7 +39,7 @@ export const TRAININGS: Training[] = [
     title: 'Arrastradores',
     badge: 'Especialización',
     text: 'Entrenamientos especializados en arrastre, perfeccioná tu técnica para marcar la diferencia en cada partido.',
-    image: 'header/img-7.webp ',
+    image: 'header/img-7.webp',
     motivo: 'PERSONALIZADOS',
   },
 ]

@@ -21,10 +21,10 @@ export interface PromoCard {
   ctaLabel: string
   ctaUrl?: string
   spotsLeft?: number
-  /** ISO 8601 date string. */
+  /** First day, "YYYY-MM-DD" */
   startsAt?: string
-  /** Start time "HH:mm", in the event's own time zone */
-  time?: string
+  /** Last day of a multi-day event, "YYYY-MM-DD" */
+  endsAt?: string
   /** Ready-to-show price, e.g. "$ 45.000" */
   priceLabel?: string
   published: boolean

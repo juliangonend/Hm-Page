@@ -22,6 +22,10 @@ const formatDate = (iso: string) =>
     minute: '2-digit',
   })
 
+/** "2027-02-12" → "vie, 12 feb 2027" (noon avoids any time-zone day shift) */
+const formatDay = (day: string) =>
+  new Date(`${day}T12:00:00`).toLocaleDateString('es-AR', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' })
+
 const formatPrice = (event: AdminEvent) =>
   event.price === null
     ? '—'
@@ -57,6 +61,7 @@ export const EventsList = ({ events, onEdit, onDelete }: EventsListProps) => {
                 <span className={`${styles.status} ${status.tone}`}>{status.label}</span>
                 <time dateTime={event.date} className={styles.itemDate}>
                   {formatDate(event.date)}
+                  {event.endDate ? ` → ${formatDay(event.endDate)}` : null}
                 </time>
               </div>
               <h3 className={styles.itemTitle}>{event.title}</h3>

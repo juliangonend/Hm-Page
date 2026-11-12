@@ -11,6 +11,8 @@ export interface AdminEvent {
   description: string
   /** ISO 8601 with offset, e.g. "2027-02-10T09:00:00-03:00" */
   date: string
+  /** Last day of a multi-day event, "YYYY-MM-DD", or null */
+  endDate: string | null
   link: string | null
   /** Decimal string ("45000.00") or null when the event has no price */
   price: string | null
@@ -28,6 +30,8 @@ export interface EventPayload {
   description: string
   /** datetime-local value, "2027-02-10T09:00" */
   date: string
+  /** "YYYY-MM-DD" or "" for a one-day event */
+  endDate: string
   link: string
   price: string
   currency: string

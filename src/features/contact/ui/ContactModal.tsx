@@ -37,7 +37,6 @@ export const ContactModal = ({ initialMotivo, initialMessage, initialCountry, on
         </p>
         <ContactForm
           variant="modal"
-          channel="whatsapp"
           initialMotivo={initialMotivo}
           initialMessage={initialMessage}
           initialCountry={initialCountry}

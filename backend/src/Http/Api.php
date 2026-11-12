@@ -224,6 +224,7 @@ final class Api
             'country' => $event->country,
             'description' => $event->description,
             'date' => $event->date->format(DATE_ATOM),
+            'endDate' => $event->endDate?->format('Y-m-d'),
             'link' => $event->link,
             'price' => $event->price,
             'currency' => $event->currency,

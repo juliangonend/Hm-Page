@@ -75,6 +75,38 @@
   scale: 1.08;
 }
 
+/* Mobile: cards stacked in a column, full width, no sideways scroll */
+@media (max-width: 767px) {
+  .grid {
+    flex-direction: column;
+    align-items: stretch;
+    margin: 0;
+    padding: 0;
+    gap: 24px;
+    overflow: visible;
+    scroll-snap-type: none;
+  }
+
+  .card {
+    flex: none;
+    width: 100%;
+  }
+}
+
+/* Touch screens have no real hover: no spotlight/dimming stuck after a tap */
+@media (hover: none) {
+  .card:not(.skeleton):hover,
+  .grid:has(.card:hover) .card:not(:hover) {
+    translate: none;
+    scale: none;
+    opacity: 1;
+  }
+
+  .card:hover .image {
+    scale: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .card,
   .image {
@@ -123,25 +155,20 @@
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3), 0 0 0 2px var(--color-white) !important;
 }
 
-/* Venue "sign" pinned on the photo */
+/* Venue: a line under the subtitle */
 .venue {
-  position: absolute;
-  top: 16px;
-  left: 16px;
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  max-width: calc(100% - 72px);
-  padding: 6px 12px;
-  border-radius: var(--radius-button);
-  background: var(--color-dark-blue);
-  color: var(--color-white);
-  font-size: 12px;
-  font-weight: 700;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+  margin: -2px 0 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-dark-blue);
+}
+
+.venue svg {
+  color: var(--color-primary);
+  flex-shrink: 0;
 }
 
 .body {

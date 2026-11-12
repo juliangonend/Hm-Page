@@ -179,6 +179,19 @@ export const EventForm = ({ event, onSubmit, onCancel }: EventFormProps) => {
             </Field>
           </div>
 
+          <Field label="Fecha de fin (opcional)" error={errors.endDate} hint="Solo para eventos de varios días, ej.: campus del 14 al 17">
+            {(props) => (
+              <input
+                {...props}
+                type="date"
+                className={styles.input}
+                value={values.endDate}
+                min={values.date.slice(0, 10) || undefined}
+                onChange={(e) => set('endDate', e.target.value)}
+              />
+            )}
+          </Field>
+
           <Field label="Link (opcional)" error={errors.link} hint="Inscripción o más información. Si está vacío, el botón abre el formulario de contacto.">
             {(props) => (
               <input

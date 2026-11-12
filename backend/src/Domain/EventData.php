@@ -19,6 +19,8 @@ final class EventData
         public readonly string $country,
         public readonly string $description,
         public readonly DateTimeImmutable $date,
+        /** Last day of a multi-day event (date only), or null for a one-day event. */
+        public readonly ?DateTimeImmutable $endDate,
         public readonly ?string $link,
         public readonly ?string $price,
         public readonly string $currency,

@@ -27,6 +27,7 @@ final class EventValidatorTest extends TestCase
             'country' => ' cl ',
             'description' => 'Tres días de entrenamiento.',
             'date' => '2027-01-15T09:30',
+            'endDate' => '2027-01-17',
             'link' => 'https://example.com/inscripcion',
             'price' => '45000,50',
             'currency' => 'ars',
@@ -39,6 +40,7 @@ final class EventValidatorTest extends TestCase
         self::assertSame('CL', $data->country);
         self::assertSame('Tres días de entrenamiento.', $data->description);
         self::assertSame('2027-01-15 09:30:00', $data->date->format('Y-m-d H:i:s'));
+        self::assertSame('2027-01-17', $data->endDate?->format('Y-m-d'));
         self::assertSame('https://example.com/inscripcion', $data->link);
         self::assertSame('45000.50', $data->price);
         self::assertSame('ARS', $data->currency);
@@ -58,6 +60,7 @@ final class EventValidatorTest extends TestCase
         self::assertNull($data->subtitle);
         self::assertNull($data->venue);
         self::assertSame('AR', $data->country);
+        self::assertNull($data->endDate);
         self::assertNull($data->link);
         self::assertNull($data->price);
         self::assertSame('ARS', $data->currency);
@@ -77,6 +80,8 @@ final class EventValidatorTest extends TestCase
         yield 'missing description' => [['description' => ''] + $valid, 'description'];
         yield 'bad date' => [['date' => '15/01/2027'] + $valid, 'date'];
         yield 'impossible date' => [['date' => '2027-02-31T10:00'] + $valid, 'date'];
+        yield 'bad end date' => [['endDate' => '17/01/2027'] + $valid, 'endDate'];
+        yield 'end date before start' => [['endDate' => '2027-01-14'] + $valid, 'endDate'];
         yield 'link not http' => [['link' => 'javascript:alert(1)'] + $valid, 'link'];
         yield 'negative price' => [['price' => '-10'] + $valid, 'price'];
         yield 'price not a number' => [['price' => 'gratis'] + $valid, 'price'];

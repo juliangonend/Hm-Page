@@ -12,6 +12,8 @@ interface ApiEvent {
   country?: string
   description: string
   date: string
+  /** "YYYY-MM-DD"; missing on APIs deployed before the end date existed */
+  endDate?: string | null
   link: string | null
   price: string | null
   currency: string
@@ -45,7 +47,7 @@ const toCard = (event: ApiEvent, index: number): PromoCard => ({
   ctaUrl: event.link ?? undefined,
   // The API already sends the date in the event's own time zone: slice, don't convert
   startsAt: event.date.slice(0, 10),
-  time: event.date.slice(11, 16),
+  endsAt: event.endDate ?? undefined,
   published: event.published,
   // The API returns upcoming events soonest first: keep that order
   order: index,

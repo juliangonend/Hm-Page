@@ -13,6 +13,7 @@ const EVENT: AdminEvent = {
   country: 'AR',
   description: 'Tres días de entrenamiento',
   date: '2027-02-10T09:00:00-03:00',
+  endDate: null,
   link: 'https://example.com',
   price: '45000.00',
   currency: 'ARS',
@@ -75,6 +76,7 @@ describe('AdminApp', () => {
     await user.selectOptions(within(form).getByLabelText(/País/), 'Chile')
     await user.type(within(form).getByLabelText(/Descripción/), 'Para todas las edades')
     await user.type(within(form).getByLabelText(/Fecha y hora/), '2027-03-01T18:00')
+    await user.type(within(form).getByLabelText(/Fecha de fin/), '2027-03-03')
     await user.type(within(form).getByLabelText(/Valor/), '15000')
     const photo = new File(['x'], 'foto.jpg', { type: 'image/jpeg' })
     await user.upload(within(form).getByLabelText(/Foto/), photo)
@@ -87,7 +89,7 @@ describe('AdminApp', () => {
         subtitle: 'Todas las edades',
         venue: 'Club STM, San Juan',
         country: 'CL',
-        date: '2027-03-01T18:00', price: '15000', published: true,
+        date: '2027-03-01T18:00', endDate: '2027-03-03', price: '15000', published: true,
       }),
     )
     expect(await screen.findByText('Campus de verano')).toBeInTheDocument()

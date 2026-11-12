@@ -56,6 +56,14 @@ final class EventValidator
             $errors['date'] = 'La fecha no es válida.';
         }
 
+        $endDateInput = $this->text($input['endDate'] ?? null);
+        $endDate = $endDateInput === '' ? null : $this->day($endDateInput);
+        if ($endDateInput !== '' && $endDate === null) {
+            $errors['endDate'] = 'La fecha de fin no es válida.';
+        } elseif ($endDate !== null && $date !== null && $endDate < $date->setTime(0, 0)) {
+            $errors['endDate'] = 'La fecha de fin no puede ser anterior a la de inicio.';
+        }
+
         $link = $this->text($input['link'] ?? null);
         if ($link !== '' && !$this->isHttpUrl($link)) {
             $errors['link'] = 'El link tiene que empezar con http:// o https://';
@@ -88,6 +96,7 @@ final class EventValidator
             country: $country,
             description: $description,
             date: $date,
+            endDate: $endDate,
             link: $link === '' ? null : $link,
             price: $price,
             currency: $currency,
@@ -111,6 +120,14 @@ final class EventValidator
         }
 
         return null;
+    }
+
+    /** "2027-01-17" → that day at 00:00, or null (rejects overflowing days such as Feb 31). */
+    private function day(string $value): ?DateTimeImmutable
+    {
+        $day = DateTimeImmutable::createFromFormat('!Y-m-d', $value, $this->timezone);
+
+        return $day !== false && $day->format('Y-m-d') === $value ? $day : null;
     }
 
     private function isHttpUrl(string $url): bool

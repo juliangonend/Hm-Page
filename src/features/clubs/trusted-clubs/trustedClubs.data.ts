@@ -3,7 +3,7 @@ import type { TrustedClub } from './TrustedClub'
 /**
  * Clubs shown in the "Clubes que confían en nosotros" field.
  * Logos are die-cut "sticker" versions (background removed + white outline) generated from the
- * originals in /public/clubs/, so they read well on the dark section background.
+ * originals in /scripts/club-logos/, so they read well on the dark section background.
  * To add a club: process its logo with scripts/make-club-stickers.py, save it in /public/clubs/stickers/ and add an entry.
  * Later this list can come from the back office (same shape).
  */

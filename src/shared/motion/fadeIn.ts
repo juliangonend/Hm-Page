@@ -1,9 +1,5 @@
 import type { GsapSetupContext } from './useGsap'
 
-/** Reduced-motion fallback: a 200ms opacity fade to the final state. */
-export const fadeInFinal = ({ gsap }: GsapSetupContext, targets: gsap.TweenTarget) =>
-  gsap.from(targets, { opacity: 0, duration: 0.2, ease: 'none' })
-
 /** Generic once-only fade-up reveal on scroll. */
 export const revealUp = (
   { gsap, reduced }: GsapSetupContext,
