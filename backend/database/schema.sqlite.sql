@@ -1,0 +1,27 @@
+-- SQLite version of schema.sql: used by the tests and for local development without MySQL
+CREATE TABLE admin_user (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  username VARCHAR(50) NOT NULL UNIQUE,
+  password_hash VARCHAR(255) NOT NULL,
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+CREATE TABLE events (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  title VARCHAR(150) NOT NULL,
+  subtitle VARCHAR(200) NULL,
+  venue VARCHAR(150) NULL,
+  description TEXT NOT NULL,
+  event_date DATETIME NOT NULL,
+  link VARCHAR(500) NULL,
+  price DECIMAL(10,2) NULL,
+  currency CHAR(3) NOT NULL DEFAULT 'ARS',
+  image_path VARCHAR(255) NULL,
+  is_published TINYINT(1) NOT NULL DEFAULT 1,
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+CREATE TABLE login_attempts (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  ip VARCHAR(45) NOT NULL,
+  attempted_at DATETIME NOT NULL
+);
